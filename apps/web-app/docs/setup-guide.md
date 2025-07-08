@@ -17,6 +17,8 @@ This guide will help you **clone**, **install**, **configure**, and **run** the 
 
 ---
 
+&nbsp;
+
 ## 🚀 1. Clone the Repository
 
 ```bash
@@ -24,12 +26,20 @@ git clone git@github.com:your-email@gmail.com/campus-connect.git
 cd your-monorepo
 ```
 
+---
+
+&nbsp;
+
 ## 📦 2. Install All Dependencies
 
 ```bash
 pnpm install
 cd apps/web
 ```
+
+---
+
+&nbsp;
 
 ## 🔐 4. Set Up Sanity
 
@@ -44,6 +54,10 @@ This guide will help you:
 - Deploy or run Studio locally at `/studio`
 
 > 📌 Make sure your `projectId` and `dataset` in `.env.local` match the values configured in your Sanity project.
+
+---
+
+&nbsp;
 
 ## 🔐 5. Set Up Environment Variables
 
