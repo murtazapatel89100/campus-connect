@@ -1,5 +1,13 @@
-import Image from "next/image";
+import Navbar from "@/components/ui/Navbar";
+import Hero from "@/components/landing/Banner";
 
-export default function Home() {
-  return <div className="bg-amber-600"> welocme to the landing page</div>;
+function Home() {
+  return (
+    <div className="bg-[#F4ECE8] min-h-screen">
+      <Navbar />
+      <Hero />
+    </div>
+  );
 }
+
+export default Home;
