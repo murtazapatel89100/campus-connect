@@ -1,11 +1,11 @@
 import Navbar from "@/components/ui/Navbar";
-import Hero from "@/components/landing/Banner";
+import Banner from "@/Pages/landing/Banner";
 
 function Home() {
   return (
     <div className="bg-[#F4ECE8] min-h-screen">
-      <Navbar />
-      <Hero />
+      <Navbar/>
+      <Banner/>
     </div>
   );
 }
