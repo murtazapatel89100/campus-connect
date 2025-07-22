@@ -23,7 +23,7 @@ export default function GreenSection() {
           </div>
 
           {/* Right: Hanging Card */}
-          <div className="flex-1 flex justify-center relative -mt-20 lg:mt-0">
+          {/* <div className="flex-1 flex justify-center relative -mt-20 lg:mt-0">
             <div className="relative">
               <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-full rounded-full z-0" />
               <div className="z-10">
@@ -35,7 +35,7 @@ export default function GreenSection() {
                 />
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
       </section>
 

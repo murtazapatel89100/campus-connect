@@ -15,6 +15,12 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: "Square Peg";
+  src: url(/fonts/Square_Peg/SquarePeg-Regular.ttf) format("truetype");
+  font-display: swap;
+}
+
 @theme {
   /* Colors */
 
@@ -62,4 +68,5 @@
 
   --font-family-goudy: "Sorts Mill Goudy", serif;
   --font-family-stick-heading: "Stick No Bills", sans-serif;
+  --font-square-peg: "Square Peg", sans-serif;
 }

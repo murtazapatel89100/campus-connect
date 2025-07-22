@@ -12,7 +12,7 @@ export default function Footer() {
         />
       </div>
 
-      <div className="bg-black text-white text-center text-sm">
+      <div className="bg-black text-white text-center font-square-peg text-9xl">
         <div className="py-8 px-4">
           <p className="font-light tracking-wide">
             Made by students for students
