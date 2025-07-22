@@ -1,3 +1,65 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+@source "../node_modules/@my-company/ui-lib";
+
+@font-face {
+  font-family: "Stick No Bills";
+  src: url(/fonts/Stick_No_Bills/static/StickNoBills-Bold.ttf)
+    format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Sorts Mill Goudy";
+  src: url(/fonts/Sorts_Mill_Goudy/SortsMillGoudy-Regular.ttf)
+    format("truetype");
+  font-display: swap;
+}
+
+@theme {
+  /* Colors */
+
+  --color-shell-100: #fafafa;
+  --color-shell-200: #f4ece8; /* Base */
+  --color-shell-300: #e6e6e5;
+  --color-shell-400: #dadad8;
+  --color-shell-500: #cecdca;
+  --color-shell-600: #b5b4b0;
+  --color-shell-700: #9c9b96;
+  --color-shell-800: #83827c;
+  --color-shell-900: #686764;
+
+  --color-teal-100: #f2f2f3;
+  --color-teal-200: #dddedf;
+  --color-teal-300: #c6cbcd;
+  --color-teal-400: #b3bcc1;
+  --color-teal-500: #369392; /* Base */
+  --color-teal-600: #8898a0;
+  --color-teal-700: #6f7e85;
+  --color-teal-800: #586165;
+  --color-teal-900: #44494b;
+
+  --color-orange-100: #f8e7db;
+  --color-orange-200: #f1cbb2;
+  --color-orange-300: #e9ae86;
+  --color-orange-400: #e2945f;
+  --color-orange-500: #c06522; /* Base */
+  --color-orange-600: #a7551c;
+  --color-orange-700: #8e4617;
+  --color-orange-800: #743712;
+  --color-orange-900: #5b290d;
+
+  --color-gray-100: #f5f5f5;
+  --color-gray-200: #eaeaea;
+  --color-gray-300: #d9d9d9; /* Base */
+  --color-gray-400: #bfbfbf;
+  --color-gray-500: #a6a6a6;
+  --color-gray-600: #8c8c8c;
+  --color-gray-700: #737373;
+  --color-gray-800: #595959;
+  --color-gray-900: #404040;
+
+  /* Fonts */
+
+  --font-family-goudy: "Sorts Mill Goudy", serif;
+  --font-family-stick-heading: "Stick No Bills", sans-serif;
+}
