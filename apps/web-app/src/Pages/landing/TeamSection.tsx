@@ -33,10 +33,10 @@ export default function TeamSection() {
   return (
     <section className="bg-[#F4ECE8] py-16 px-4 sm:px-8 lg:px-16">
       <div className="max-w-7xl mx-auto text-center mb-12">
-        <h2 className="text-4xl font-family-stick-heading md:text-5xl font-bold mb-4">
+        <h2 className="text-4xl font-gothic-expanded md:text-6xl font-bold mb-4">
           Meet Our Team
         </h2>
-        <p className="text-lg text-gray-700 font-family-goudy">
+        <p className="text-xl text-black font-family-goudy">
           Passionate people powering Campus Connect
         </p>
       </div>
@@ -49,7 +49,8 @@ export default function TeamSection() {
               bg-black text-white 
               w-[90%] max-w-[256px] h-[338px] 
               rounded-xl overflow-hidden shadow-2xl 
-              transform transition-transform hover:scale-105
+              font-gothic-expanded
+              transform transition-transform hover:scale-105 hover:shadow-shell-900
             "
           >
             {/* Image */}

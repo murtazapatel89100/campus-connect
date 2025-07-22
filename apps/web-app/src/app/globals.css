@@ -21,6 +21,13 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: "Special Gothic Expanded One";
+  src: url(/fonts/Special_Gothic_Expanded_One/SpecialGothicExpandedOne-Regular.ttf)
+    format("truetype");
+  font-display: swap;
+}
+
 @theme {
   /* Colors */
 
@@ -69,4 +76,5 @@
   --font-family-goudy: "Sorts Mill Goudy", serif;
   --font-family-stick-heading: "Stick No Bills", sans-serif;
   --font-square-peg: "Square Peg", sans-serif;
+  --font-gothic-expanded: "Special Gothic Expanded One", sans-serif;
 }

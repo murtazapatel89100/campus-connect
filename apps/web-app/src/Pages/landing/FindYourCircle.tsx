@@ -15,7 +15,7 @@ export default function FindYourCircle() {
 
         {/* Text */}
         <div className="w-full lg:w-1/2 text-black text-center lg:text-left">
-          <h2 className="text-4xl md:text-5xl font-family-stick-heading font-extrabold tracking-wide mb-6">
+          <h2 className="text-4xl md:text-5xl font-gothic-expanded font-extrabold tracking-wide mb-6">
             Find Your Circle,
             <br />
             Build Your Campus Story

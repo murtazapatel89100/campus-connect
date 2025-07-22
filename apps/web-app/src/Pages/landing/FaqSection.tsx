@@ -43,8 +43,8 @@ export default function FaqSection() {
           >
             {({ open }) => (
               <>
-                <Disclosure.Button className="flex w-full h-11 justify-between items-center text-left">
-                  <span className="text-base font-bold text-gray-900">
+                <Disclosure.Button className="flex w-full h-11 font-gothic-expanded justify-between items-center text-left">
+                  <span className="text-balance tracking-wide text-black">
                     {faq.question}
                   </span>
                   <ChevronDownIcon

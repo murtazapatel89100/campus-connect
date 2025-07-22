@@ -10,10 +10,10 @@ export default function GreenSection() {
         <div className="w-full max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-12">
           {/* Left Content */}
           <div className="flex-1 max-w-2xl">
-            <h2 className="text-6xl md:text-7xl text-black font-family-stick-heading font-extrabold tracking-wide mb-6">
+            <h2 className="text-6xl md:text-6xl text-black font-gothic-expanded font-extrabold tracking-wider mb-6">
               Connect. Collaborate. Campus Life.
             </h2>
-            <p className="text-lg font-landing-body text-black font-family-goudy md:text-xl font-light leading-relaxed">
+            <p className="text-xl font-landing-body text-black font-family-goudy md:text-2xl font-light leading-relaxed">
               Dive into the pulse of student life with Campus Connect — your
               gateway to clubs, events, opportunities, and conversations across
               campus. Built with purpose and packed with personality, we make it
