@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import { BannerButton } from "@/components/ui/Buttons";
 
@@ -12,16 +12,16 @@ export default function Hero() {
       }}
     >
       <div className="w-full max-w-7xl px-4 sm:px-8 lg:px-16 mx-auto text-center space-y-6">
-        <h1 className="text-4xl md:text-5xl lg:text-6xl font-['Stick_No_Bills'] font-bold">
+        <h1 className="text-4xl md:text-5xl font-serif stick lg:text-6xl font-bold">
           Welcome to Campus Connect
         </h1>
-        <p className="text-xl md:text-2xl lg:text-3xl font-light leading-tight font-sans">
+        <p className="text-xl md:text-2xl font-sans lg:text-3xl font-light leading-tight">
           Explore. Connect. Belong. Campus life, simplified.
         </p>
 
         <div className="mt-10 flex flex-wrap justify-center gap-4 sm:gap-8">
           <BannerButton variant="primary" text="READ OUR ORIGIN STORY" />
-          <BannerButton variant="secondary" text="SEE DOCUMENTATION" />
+          <BannerButton variant="secondary" text="CONTACT US" />
         </div>
       </div>
 

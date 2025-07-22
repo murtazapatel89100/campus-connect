@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 export default function FindYourCircle() {
   return (
@@ -15,14 +15,16 @@ export default function FindYourCircle() {
 
         {/* Text */}
         <div className="w-full lg:w-1/2 text-black text-center lg:text-left">
-          <h2 className="text-4xl md:text-5xl font-bold font-['Stick_No_Bills'] tracking-wide mb-6">
-            Find Your Circle,<br />Build Your Campus Story
+          <h2 className="text-4xl md:text-5xl font-family-stick-heading font-extrabold tracking-wide mb-6">
+            Find Your Circle,
+            <br />
+            Build Your Campus Story
           </h2>
-          <p className="text-lg md:text-xl font-light font-['Sorts_Mill_Goudy'] leading-relaxed">
-            Explore interest-based clubs, attend exclusive student events, and meet
-            peers who vibe with your passions. Campus Connect helps you discover and
-            join communities that make college more than just classes — it becomes
-            connection, creativity, and real collaboration.
+          <p className="text-lg md:text-xl font-family-goudy leading-relaxed">
+            Explore interest-based clubs, attend exclusive student events, and
+            meet peers who vibe with your passions. Campus Connect helps you
+            discover and join communities that make college more than just
+            classes — it becomes connection, creativity, and real collaboration.
           </p>
         </div>
       </div>

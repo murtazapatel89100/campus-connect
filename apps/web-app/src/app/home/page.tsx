@@ -1,11 +1,19 @@
-import Navbar from "@/components/ui/Navbar";
-import Banner from "@/Pages/landing/Banner";
+import FaqSection from "@/Pages/landing/FaqSection";
+import FindYourCircle from "@/Pages/landing/FindYourCircle";
+import GreenSection from "@/Pages/landing/GreenSection";
+import Hero from "@/Pages/landing/Hero";
+import OrangeSection from "@/Pages/landing/OrangeSection";
+import TeamSection from "@/Pages/landing/TeamSection";
 
 function Home() {
   return (
-    <div className="bg-page min-h-screen">
-      <Navbar />
-      <Banner />
+    <div className="min-h-screen">
+      <Hero />
+      <GreenSection />
+      <FindYourCircle />
+      <OrangeSection />
+      <TeamSection />
+      <FaqSection />
     </div>
   );
 }

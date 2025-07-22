@@ -1,6 +1,6 @@
-'use client';
+"use client";
 
-import { BannerButton } from '@/components/ui/Buttons';
+import { BannerButton } from "@/components/ui/Buttons";
 
 export default function OrangeSection() {
   return (
@@ -16,43 +16,44 @@ export default function OrangeSection() {
       </div>
 
       {/* Orange Section */}
-      <section className="w-full bg-[#C06522] text-white py-14 px-4 sm:px-8 lg:px-16">
+      <section className="w-full bg-orange-500 text-black py-14 px-4 sm:px-8 lg:px-16">
         <div className="max-w-7xl mx-auto text-center space-y-16">
           {/* Grid of Features */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-20">
             {/* Feature 1 */}
             <div className="flex flex-col items-center space-y-4">
-              <div className="w-[84px] h-[84px] bg-[#D9D9D9] rounded-xl" />
-              <h2 className="text-4xl md:text-5xl font-['Stick_No_Bills'] font-bold tracking-wider">
+              <div className="w-[84px] h-[84px] bg-gray-300 rounded-xl" />
+              <h2 className="text-4xl md:text-5xl font-family-stick-heading font-extrabold tracking-wider">
                 Secure by Design
               </h2>
-              <p className="text-base md:text-lg font-['Sorts_Mill_Goudy'] text-black leading-relaxed max-w-xs">
-                Your data stays yours. We use encrypted tokens, protected routes, and best
-                practices to keep your campus life private and safe.
+              <p className="text-base md:text-lg text-black font-family-goudy leading-relaxed max-w-xs">
+                Your data stays yours. We use encrypted tokens, protected
+                routes, and best practices to keep your campus life private and
+                safe.
               </p>
             </div>
 
             {/* Feature 2 */}
             <div className="flex flex-col items-center space-y-4">
-              <div className="w-[100px] h-[100px] bg-[#D9D9D9] rounded-xl" />
-              <h2 className="text-4xl md:text-5xl font-['Stick_No_Bills'] font-bold tracking-wider">
+              <div className="w-[100px] h-[100px] bg-gray-300 rounded-xl" />
+              <h2 className="text-4xl md:text-5xl font-family-stick-heading font-extrabold tracking-wider">
                 Blazing Fast
               </h2>
-              <p className="text-base md:text-lg font-['Sorts_Mill_Goudy'] text-black leading-relaxed max-w-xs">
-                Built with Next.js and Express, our app delivers lightning-fast performance
-                whether you're browsing events or checking updates.
+              <p className="text-base md:text-lg text-black font-family-goudy leading-relaxed max-w-xs">
+                Built with Next.js and Express, our app delivers lightning-fast
+                performance whether you're browsing events or checking updates.
               </p>
             </div>
 
             {/* Feature 3 */}
             <div className="flex flex-col items-center space-y-4">
-              <div className="w-[84px] h-[84px] bg-[#D9D9D9] rounded-xl" />
-              <h2 className="text-4xl md:text-5xl font-['Stick_No_Bills'] font-bold tracking-wider">
+              <div className="w-[84px] h-[84px] bg-gray-300 rounded-xl" />
+              <h2 className="text-4xl md:text-5xl font-family-stick-heading font-extrabold tracking-wider">
                 Sync Across Devices
               </h2>
-              <p className="text-base md:text-lg font-['Sorts_Mill_Goudy'] text-black leading-relaxed max-w-xs">
-                From web to mobile (coming soon), your activity stays in sync. One login,
-                one dashboard, everywhere you go.
+              <p className="text-base md:text-lg text-black font-family-goudy leading-relaxed max-w-xs">
+                From web to mobile (coming soon), your activity stays in sync.
+                One login, one dashboard, everywhere you go.
               </p>
             </div>
           </div>
