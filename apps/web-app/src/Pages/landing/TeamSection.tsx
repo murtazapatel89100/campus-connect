@@ -59,8 +59,7 @@ export default function TeamSection() {
                 src={member.image}
                 alt={member.name}
                 layout="fill"
-                objectFit="cover"
-                className="opacity-80"
+                className="opacity-80 object-cover"
               />
             </div>
 
