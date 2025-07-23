@@ -28,7 +28,7 @@ export default function FindYourCircle() {
           alt="Find your circle"
           height={400}
           width={600}
-          className="rounded-xl shadow-lg"
+          className="rounded-xl hover:scale-105 hover:shadow-2xl transition-transform shadow-lg"
         />
 
         {/* Text */}

@@ -57,7 +57,7 @@ export default function OrangeSection() {
             {content.map((item) => (
               <div
                 key={item.key}
-                className="flex flex-col items-center text-center space-y-4 px-4"
+                className="flex hover:scale-110 transition-transform flex-col items-center text-center space-y-4 px-4"
               >
                 <div className="w-[100px] h-[100px] flex items-center justify-center rounded-xl">
                   <LazyLoading

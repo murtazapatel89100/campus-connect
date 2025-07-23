@@ -2,6 +2,7 @@
 
 import { Disclosure } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/20/solid";
+import { AnimatePresence, motion } from "framer-motion";
 
 type FAQ = {
   question: string;
@@ -48,14 +49,30 @@ export default function FaqSection() {
                     {faq.question}
                   </span>
                   <ChevronDownIcon
-                    className={`h-5 w-5 text-gray-500 transition-transform duration-300 ${
+                    className={`h-5 w-5 text-gray-500 transition-transform duration-500 ${
                       open ? "rotate-180" : ""
                     }`}
                   />
                 </Disclosure.Button>
-                <Disclosure.Panel className="mt-2 text-sm text-gray-700">
-                  {faq.answer}
-                </Disclosure.Panel>
+
+                <AnimatePresence initial={false}>
+                  {open && (
+                    <motion.div
+                      key="content"
+                      initial="collapsed"
+                      animate="open"
+                      exit="collapsed"
+                      variants={{
+                        open: { opacity: 1, height: "auto" },
+                        collapsed: { opacity: 0, height: 0 },
+                      }}
+                      transition={{ duration: 0.3, ease: "easeInOut" }}
+                      className="overflow-hidden mt-2 text-sm text-gray-700"
+                    >
+                      {faq.answer}
+                    </motion.div>
+                  )}
+                </AnimatePresence>
               </>
             )}
           </Disclosure>
