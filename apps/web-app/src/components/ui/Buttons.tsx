@@ -6,8 +6,10 @@ const bannerButton = cva(
   {
     variants: {
       variant: {
-        primary: "border-[#369392] text-white hover:bg-[#369392]",
-        secondary: "border-[#C06522] text-white hover:bg-[#C06522]",
+        primary:
+          "border-[#369392] text-white hover:text-black hover:bg-[#369392]",
+        secondary:
+          "border-[#C06522] text-white hover:text-black hover:bg-[#C06522]",
         tertiary: "border-white text-white hover:bg-white hover:text-black",
       },
     },
