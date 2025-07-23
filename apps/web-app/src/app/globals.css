@@ -78,3 +78,49 @@
   --font-square-peg: "Square Peg", sans-serif;
   --font-gothic-expanded: "Special Gothic Expanded One", sans-serif;
 }
+
+@layer base {
+  /* Custom Scrollbar Styles */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: theme("colors.shell.200");
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: black;
+    border-radius: 9999px;
+    border: 2px solid transparent;
+    background-clip: content-box;
+  }
+}
+
+@layer utilities {
+  /* Alternative scrollbar variants */
+  .scrollbar-shell::-webkit-scrollbar-thumb {
+    background-color: theme("colors.shell.400");
+  }
+
+  .scrollbar-shell::-webkit-scrollbar-thumb:hover {
+    background-color: theme("colors.shell.500");
+  }
+
+  .scrollbar-teal::-webkit-scrollbar-thumb {
+    background-color: theme("colors.teal.400");
+  }
+
+  .scrollbar-teal::-webkit-scrollbar-thumb:hover {
+    background-color: theme("colors.teal.500");
+  }
+
+  .scrollbar-orange::-webkit-scrollbar-thumb {
+    background-color: theme("colors.orange.400");
+  }
+
+  .scrollbar-orange::-webkit-scrollbar-thumb:hover {
+    background-color: theme("colors.orange.500");
+  }
+}
