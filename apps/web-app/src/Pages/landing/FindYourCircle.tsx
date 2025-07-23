@@ -1,17 +1,35 @@
 "use client";
+import Image from "next/image";
+import { useEffect } from "react";
+import { useInView } from "react-intersection-observer";
+import { motion, useAnimation } from "framer-motion";
+import LazyLoading from "@/components/Animation/LazyLoading";
 
 export default function FindYourCircle() {
+  const controls = useAnimation();
+  const [ref, inView] = useInView({
+    triggerOnce: false,
+    threshold: 0.2,
+  });
+
+  useEffect(() => {
+    if (inView) {
+      controls.start("visible");
+    } else {
+      controls.start("hidden");
+    }
+  }, [controls, inView]);
   return (
     <section className="w-full bg-[#F4ECE8] py-20 px-4 sm:px-8 lg:px-16">
       <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-12">
         {/* Image */}
-        <div className="w-full lg:w-1/2">
-          <img
-            src="/images/find_your_circle.png"
-            alt="Find your circle"
-            className="rounded-2xl w-full h-auto object-cover shadow-lg"
-          />
-        </div>
+        <LazyLoading
+          image="/images/find_your_circle.png"
+          alt="Find your circle"
+          height={400}
+          width={600}
+          className="rounded-xl shadow-lg"
+        />
 
         {/* Text */}
         <div className="w-full lg:w-1/2 text-black text-center lg:text-left">

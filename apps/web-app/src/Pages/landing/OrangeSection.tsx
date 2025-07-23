@@ -1,8 +1,43 @@
 "use client";
 
+import LazyLoading from "@/components/Animation/LazyLoading";
 import { BannerButton } from "@/components/ui/Buttons";
+import Image from "next/image";
 
 export default function OrangeSection() {
+  const content = [
+    {
+      key: 1,
+      icon: "/icons/encrypted_add.svg",
+      alt: "Secure svg",
+      heading: "Secure by Design",
+      content:
+        "Your data stays yours. We use encrypted tokens, protected routes, and best practices to keep your campus life private and safe.",
+      width: 100,
+      height: 100,
+    },
+    {
+      key: 2,
+      icon: "/icons/flash_on.svg",
+      alt: "Lightning svg",
+      heading: "Blazing Fast",
+      content:
+        "Built with Next.js and Express, our app delivers lightning-fast performance whether you're browsing events or checking updates.",
+      width: 70,
+      height: 70,
+    },
+    {
+      key: 3,
+      icon: "/icons/devices.svg",
+      alt: "Devices svg",
+      heading: "Sync Across Devices",
+      content:
+        "From web to mobile (coming soon), your activity stays in sync. One login, one dashboard, everywhere you go.",
+      width: 100,
+      height: 100,
+    },
+  ];
+
   return (
     <>
       {/* Top Orange Wave */}
@@ -18,44 +53,28 @@ export default function OrangeSection() {
       {/* Orange Section */}
       <section className="w-full bg-orange-500 text-black py-14 px-4 sm:px-8 lg:px-16">
         <div className="max-w-7xl mx-auto text-center space-y-16">
-          {/* Grid of Features */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-20">
-            {/* Feature 1 */}
-            <div className="flex flex-col items-center space-y-4">
-              <div className="w-[84px] h-[84px] bg-gray-300 rounded-xl" />
-              <h2 className="text-4xl md:text-5xl font-family-stick-heading font-extrabold tracking-wider">
-                Secure by Design
-              </h2>
-              <p className="text-base md:text-lg text-black font-family-goudy leading-relaxed max-w-xs">
-                Your data stays yours. We use encrypted tokens, protected
-                routes, and best practices to keep your campus life private and
-                safe.
-              </p>
-            </div>
-
-            {/* Feature 2 */}
-            <div className="flex flex-col items-center space-y-4">
-              <div className="w-[100px] h-[100px] bg-gray-300 rounded-xl" />
-              <h2 className="text-4xl md:text-5xl font-family-stick-heading font-extrabold tracking-wider">
-                Blazing Fast
-              </h2>
-              <p className="text-base md:text-lg text-black font-family-goudy leading-relaxed max-w-xs">
-                Built with Next.js and Express, our app delivers lightning-fast
-                performance whether you're browsing events or checking updates.
-              </p>
-            </div>
-
-            {/* Feature 3 */}
-            <div className="flex flex-col items-center space-y-4">
-              <div className="w-[84px] h-[84px] bg-gray-300 rounded-xl" />
-              <h2 className="text-4xl md:text-5xl font-family-stick-heading font-extrabold tracking-wider">
-                Sync Across Devices
-              </h2>
-              <p className="text-base md:text-lg text-black font-family-goudy leading-relaxed max-w-xs">
-                From web to mobile (coming soon), your activity stays in sync.
-                One login, one dashboard, everywhere you go.
-              </p>
-            </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 font-family-stick-heading gap-12 md:gap-16">
+            {content.map((item) => (
+              <div
+                key={item.key}
+                className="flex flex-col items-center text-center space-y-4 px-4"
+              >
+                <div className="w-[100px] h-[100px] flex items-center justify-center rounded-xl">
+                  <LazyLoading
+                    image={item.icon}
+                    alt={item.alt}
+                    height={item.height}
+                    width={item.width}
+                  />
+                </div>
+                <h2 className="text-3xl md:text-4xl whitespace-nowrap">
+                  {item.heading}
+                </h2>
+                <p className="text-base md:text-lg text-black font-family-goudy leading-relaxed max-w-xs">
+                  {item.content}
+                </p>
+              </div>
+            ))}
           </div>
 
           {/* CTA Button */}
