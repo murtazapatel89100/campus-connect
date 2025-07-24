@@ -1,7 +1,5 @@
 "use client";
 
-import StudentIDCard from "@/components/Student-Card/StudentIDCard";
-
 export default function GreenSection() {
   return (
     <>

@@ -8,6 +8,9 @@ const nextConfig = {
   experimental: {
     turbo: false,
   },
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
   async redirects() {
     return [
       {

@@ -1,8 +1,7 @@
 "use client";
-import Image from "next/image";
 import { useEffect } from "react";
 import { useInView } from "react-intersection-observer";
-import { motion, useAnimation } from "framer-motion";
+import { useAnimation } from "framer-motion";
 import LazyLoading from "@/components/Animation/LazyLoading";
 
 export default function FindYourCircle() {
