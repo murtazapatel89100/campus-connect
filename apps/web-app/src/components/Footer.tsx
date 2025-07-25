@@ -1,8 +1,22 @@
-// components/Footer.tsx
-// The code for black wave is in home/landing/banner.tsx
+"use client";
+
+import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
+import { cn } from "../../lib/utils";
+
 export default function Footer() {
+  const pathname = usePathname();
+
+  const [hide, setHide] = useState(false);
+
+  useEffect(() => {
+    if (pathname === "/registration") {
+      setHide(true);
+    }
+  }, [pathname]);
+
   return (
-    <footer>
+    <footer className={cn(hide ? "hidden" : "block")}>
       <div className="w-full -mb-[2px]">
         <img
           src="/waves/wave_black.svg"
