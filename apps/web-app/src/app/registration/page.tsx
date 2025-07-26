@@ -57,7 +57,6 @@ export default function AuthPage() {
               Welcome!
             </h1>
 
-            {/* EMAIL FIELD */}
             <div className="w-full">
               <label className="block font-medium text-[#1E1E1E] mb-1">
                 Email
@@ -97,7 +96,6 @@ export default function AuthPage() {
               </div>
             </div>
 
-            {/* REMEMBER ME + FORGOT */}
             <div className="w-full flex justify-between items-center text-xs text-[#000000]">
               <label className="flex items-center gap-2 text-sm text-[#000000]">
                 <input
@@ -125,7 +123,6 @@ export default function AuthPage() {
               </Link>
             </div>
 
-            {/* SIGN IN BUTTON */}
             <button
               type="submit"
               className="w-full bg-[#1E1E1E] cursor-pointer hover:scale-105 transition-transform text-white font-semibold py-3 rounded-md"
