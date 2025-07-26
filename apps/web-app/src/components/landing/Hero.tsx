@@ -1,6 +1,7 @@
 "use client";
 
 import { BannerButton } from "@/components/ui/Buttons";
+import Link from "next/link";
 
 export default function Hero() {
   return (
@@ -20,8 +21,13 @@ export default function Hero() {
         </p>
 
         <div className="mt-10 flex flex-wrap justify-center gap-4 sm:gap-8">
-          <BannerButton variant="primary" text="READ OUR ORIGIN STORY" />
-          <BannerButton variant="secondary" text="CONTACT US" />
+          <Link href={`/registration`}>
+            <BannerButton variant="primary" text="Sign Up" />
+          </Link>
+
+          <Link href={`#`}>
+            <BannerButton variant="secondary" text="SIGN IN" />
+          </Link>
         </div>
       </div>
 
