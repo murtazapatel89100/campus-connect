@@ -6,7 +6,7 @@ import {
   VscHome,
   VscSettingsGear,
 } from "react-icons/vsc";
-import Dock from "@/components/ui/Dock";
+import Dock from "@/components/ui/Dock/Dock";
 
 const DockWrapper = () => {
   const items = [

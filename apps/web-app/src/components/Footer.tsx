@@ -10,8 +10,10 @@ export default function Footer() {
   const [hide, setHide] = useState(false);
 
   useEffect(() => {
-    if (pathname === "/registration") {
+    if (pathname.startsWith("/registration")) {
       setHide(true);
+    } else {
+      setHide(false);
     }
   }, [pathname]);
 
