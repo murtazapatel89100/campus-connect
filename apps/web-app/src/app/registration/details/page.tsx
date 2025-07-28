@@ -3,7 +3,6 @@ import Stepper, { Step } from "@/components/ui/stepper/stepper";
 import React, { useState } from "react";
 
 const page = () => {
-  const [name, setName] = useState("");
   const [firstName, setFirstName] = useState("");
   const [middleName, setMiddleName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -12,7 +11,10 @@ const page = () => {
   const [branch, setBranch] = useState("");
   const [year, setYear] = useState("");
   const [rollNo, setRollNo] = useState("");
-  const [club, setClub] = useState("");
+  const [mobNumber, setMobNumber] = useState("");
+  const [alternateMobNumber, setAlternateMobNumber] = useState("");
+  const [email, setEmail] = useState("");
+
   return (
     <div>
       <form action="">
@@ -38,7 +40,7 @@ const page = () => {
                     First name
                   </label>
                   <input
-                    type="email"
+                    type="text"
                     required
                     value={firstName}
                     onChange={(e) => setFirstName(e.target.value)}
@@ -199,16 +201,57 @@ const page = () => {
           </Step>
 
           <Step>
-            <h2>How about an input?</h2>
-            <input
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              placeholder="Your name?"
-            />
-          </Step>
-          <Step>
-            <h2>Final Step</h2>
-            <p>You made it!</p>
+            <div className="flex font-albert-sans flex-col">
+              <div className="flex flex-col">
+                <h2 className="font-bold text-3xl">Contact info</h2>
+                <p>Specify exactly as in your identity card.</p>
+              </div>
+
+              <div className="flex flex-col gap-5 mt-5">
+                <div>
+                  <label className="block font-bold text-[#1E1E1E] mb-1">
+                    Mobile no.
+                  </label>
+                  <input
+                    type="tel"
+                    pattern="[6-9]{1}[0-9]{9}"
+                    required
+                    value={mobNumber}
+                    onChange={(e) => setMobNumber(e.target.value)}
+                    className="w-full px-4 py-3 border border-transparent bg-gray-200 backdrop-blur-3xl rounded-xl text-sm placeholder-[#5B5B5B] transition-all duration-300 focus:border-[#5B5B5B] focus:bg-white focus:backdrop-blur-0"
+                    placeholder="91+ 98222 98222"
+                  />
+                </div>
+
+                <div>
+                  <label className="block font-bold text-[#1E1E1E] mb-1">
+                    Alternative Mobile no.
+                  </label>
+                  <input
+                    type="tel"
+                    pattern="[6-9]{1}[0-9]{9}"
+                    value={alternateMobNumber}
+                    onChange={(e) => setAlternateMobNumber(e.target.value)}
+                    className="w-full px-4 py-3 border border-transparent bg-gray-200 backdrop-blur-3xl rounded-xl text-sm placeholder-[#5B5B5B] transition-all duration-300 focus:border-[#5B5B5B] focus:bg-white focus:backdrop-blur-0"
+                    placeholder="91+ 98222 98222"
+                  />
+                </div>
+
+                <div>
+                  <label className="block font-bold text-[#1E1E1E] mb-1">
+                    E-mail:- University provided
+                  </label>
+                  <input
+                    type="email"
+                    required
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    className="w-full px-4 py-3 border border-transparent bg-gray-200 backdrop-blur-3xl rounded-xl text-sm placeholder-[#5B5B5B] transition-all duration-300 focus:border-[#5B5B5B] focus:bg-white focus:backdrop-blur-0"
+                    placeholder="Enter your email id"
+                  />
+                </div>
+              </div>
+            </div>
           </Step>
         </Stepper>
       </form>

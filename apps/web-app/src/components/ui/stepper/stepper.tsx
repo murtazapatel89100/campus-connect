@@ -148,10 +148,10 @@ export default function Stepper({
               {currentStep !== 1 && (
                 <button
                   onClick={handleBack}
-                  className={`duration-350 rounded px-2 py-1 transition ${
+                  className={`duration-350 text-white rounded px-2 transition ${
                     currentStep === 1
-                      ? "pointer-events-none opacity-50 text-neutral-400"
-                      : "text-neutral-400 hover:text-neutral-700"
+                      ? "pointer-events-none text-neutral-400"
+                      : "hover:scale-110 transition-transform hover:backdrop-blur-2xl hover:bg-white/10 active:bg-black"
                   }`}
                   {...backButtonProps}
                 >
@@ -160,7 +160,7 @@ export default function Stepper({
               )}
               <button
                 onClick={isLastStep ? handleComplete : handleNext}
-                className="duration-350 flex items-center justify-center rounded-full bg-green-500 py-1.5 px-3.5 font-medium tracking-tight text-white transition hover:bg-green-600 active:bg-green-700"
+                className="flex items-center justify-center rounded-md py-1.5 px-3.5 font-medium tracking-tight text-white hover:scale-110 transition-transform hover:backdrop-blur-2xl hover:bg-white/10 active:bg-black"
                 {...nextButtonProps}
               >
                 {isLastStep ? "Complete" : nextButtonText}
