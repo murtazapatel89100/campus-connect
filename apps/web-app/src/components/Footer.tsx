@@ -6,6 +6,7 @@ import { cn } from "../lib/utils";
 
 export default function Footer() {
   const pathname = usePathname();
+
   const [hide, setHide] = useState(false);
 
   useEffect(() => {
