@@ -1,7 +1,9 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
 import { IoMdCloudUpload } from "react-icons/io";
 
 const Page = () => {
+  const [fileName, setFileName] = useState("");
   return (
     <div className="flex items-center justify-center min-h-screen">
       <div className="backdrop-blur-xl bg-[#555555]/40 text-white p-8 rounded-2xl shadow-xl border border-white/20 ring-1 ring-white/10">
@@ -19,6 +21,9 @@ const Page = () => {
             <label className="block mb-1 font-medium">Name of the file</label>
             <input
               type="text"
+              value={fileName}
+              onChange={(e) => setFileName(e.target.value)}
+              placeholder="Enter file name"
               required
               className="w-full rounded-md p-2 bg-white/10 text-white file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-white/20 file:text-white hover:file:bg-white/30"
             />
