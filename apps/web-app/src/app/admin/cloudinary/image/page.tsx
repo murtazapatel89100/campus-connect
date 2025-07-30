@@ -4,7 +4,10 @@ import { CldUploadWidget } from "next-cloudinary";
 const Page = () => {
   return (
     <div className="flex items-center font-itim justify-center min-h-screen">
-      <CldUploadWidget uploadPreset="signed_preset">
+      <CldUploadWidget
+        signatureEndpoint={`/api/image-sign`}
+        uploadPreset="signed_preset"
+      >
         {({ open }) => {
           return (
             <button
