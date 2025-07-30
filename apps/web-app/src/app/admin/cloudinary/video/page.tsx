@@ -5,19 +5,25 @@ const Page = () => {
   return (
     <div className="flex items-center font-itim justify-center min-h-screen">
       <CldUploadWidget
-        signatureEndpoint={`/api/video-upload`}
+        signatureEndpoint="/api/video-upload"
         uploadPreset="signed_preset"
-      >
-        {({ open }) => {
-          return (
-            <button
-              className="cursor-pointer backdrop-blur-xl bg-[#555555]/40 text-white p-8 rounded-2xl shadow-xl border border-white/20 ring-1 ring-white/10"
-              onClick={() => open()}
-            >
-              Upload an Video
-            </button>
-          );
+        options={{
+          resourceType: "video",
+          sources: ["local", "url", "camera"],
+          multiple: false,
+          maxFiles: 1,
+          clientAllowedFormats: ["mp4", "webm", "mov"],
         }}
+      >
+        {({ open }) => (
+          <button
+            type="button"
+            className="cursor-pointer backdrop-blur-xl bg-[#555555]/40 text-white p-8 rounded-2xl shadow-xl border border-white/20 ring-1 ring-white/10"
+            onClick={() => open()}
+          >
+            Upload a Video
+          </button>
+        )}
       </CldUploadWidget>
     </div>
   );
