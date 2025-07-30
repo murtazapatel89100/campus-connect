@@ -158,13 +158,24 @@ export default function Stepper({
                   {backButtonText}
                 </button>
               )}
-              <button
-                onClick={isLastStep ? handleComplete : handleNext}
-                className="flex items-center justify-center rounded-md py-1.5 px-3.5 font-medium tracking-tight text-white hover:scale-110 transition-transform hover:backdrop-blur-2xl hover:bg-white/10 active:bg-black"
-                {...nextButtonProps}
-              >
-                {isLastStep ? "Complete" : nextButtonText}
-              </button>
+              {isLastStep ? (
+                <button
+                  type="submit"
+                  className="flex items-center justify-center rounded-md py-1.5 px-3.5 font-medium tracking-tight text-white hover:scale-110 transition-transform hover:backdrop-blur-2xl hover:bg-white/10 active:bg-black"
+                  {...nextButtonProps}
+                >
+                  Complete
+                </button>
+              ) : (
+                <button
+                  type="button"
+                  onClick={handleNext}
+                  className="flex items-center justify-center rounded-md py-1.5 px-3.5 font-medium tracking-tight text-white hover:scale-110 transition-transform hover:backdrop-blur-2xl hover:bg-white/10 active:bg-black"
+                  {...nextButtonProps}
+                >
+                  {nextButtonText}
+                </button>
+              )}
             </div>
           </div>
         )}

@@ -15,9 +15,27 @@ const page = () => {
   const [alternateMobNumber, setAlternateMobNumber] = useState("");
   const [email, setEmail] = useState("");
 
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+
+    console.log({
+      firstName,
+      middleName,
+      lastName,
+      birthDate,
+      gender,
+      branch,
+      year,
+      rollNo,
+      mobNumber,
+      alternateMobNumber,
+      email,
+    });
+  };
+
   return (
     <div>
-      <form action="">
+      <form onSubmit={handleSubmit}>
         <Stepper
           initialStep={1}
           onStepChange={(step) => {

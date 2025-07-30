@@ -4,7 +4,7 @@ import React from "react";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
-import { cn } from "../../../lib/utils";
+import { cn } from "../../models/lib/utils";
 
 import { FaImage, FaPhotoVideo, FaFileVideo } from "react-icons/fa";
 

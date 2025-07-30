@@ -2,7 +2,7 @@
 
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { cn } from "../../lib/utils";
+import { cn } from "../models/lib/utils";
 
 export default function Footer() {
   const pathname = usePathname();
