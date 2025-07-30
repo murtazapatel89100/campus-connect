@@ -6,11 +6,10 @@ import { cn } from "../../lib/utils";
 
 export default function Footer() {
   const pathname = usePathname();
-
   const [hide, setHide] = useState(false);
 
   useEffect(() => {
-    if (pathname.startsWith("/registration")) {
+    if (pathname.startsWith("/registration") || pathname.startsWith("/admin")) {
       setHide(true);
     } else {
       setHide(false);
