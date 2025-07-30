@@ -2,22 +2,18 @@
 
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { cn } from "../../lib/utils";
+<<<<<<< HEAD
+import { cn } from "../models/lib/utils";
+=======
+import { cn } from "../lib/utils";
+>>>>>>> origin/main
 
 export default function Footer() {
   const pathname = usePathname();
-<<<<<<< HEAD
-
-  const [hide, setHide] = useState(false);
-
-  useEffect(() => {
-    if (pathname.startsWith("/registration")) {
-=======
   const [hide, setHide] = useState(false);
 
   useEffect(() => {
     if (pathname.startsWith("/registration") || pathname.startsWith("/admin")) {
->>>>>>> 9907657 (feat: add Cloudinary integration for assets hosting (#3))
       setHide(true);
     } else {
       setHide(false);
