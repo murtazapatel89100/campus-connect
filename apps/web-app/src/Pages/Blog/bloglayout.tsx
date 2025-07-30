@@ -1,129 +1,117 @@
-import Image from "next/image";
+'use client';
+import Link from 'next/link';
+import Image from 'next/image';
+import React from 'react';
 
-export default function BlogLayout() {
+const blogPosts = [
+  {
+    title: 'Title of the Blog Post',
+    excerpt: 'Explore how to bounce back from setbacks and grow stronger...',
+    image: '/images/blog/blog1.jpg',
+    author: 'Andrea Wise',
+    date: 'July 28, 2025',
+    link: '/blog/resilience',
+    span: 'col-span-1',
+  },
+  {
+    title: 'Title of the Blog Post',
+    excerpt: 'Unlock your potential with proven strategies...',
+    image: '/images/blog/blog2.jpg',
+    author: 'Karen Smith',
+    date: 'July 20, 2025',
+    link: '/blog/growth',
+    span: 'col-span-1',
+  },
+  {
+    title: 'Title of the Blog Post',
+    excerpt: 'lorem ipsum dolor sit amet consectetur adipisicing elit.',
+    image: '/images/blog/food.avif',
+    author: 'Samantha William',
+    date: 'July 22, 2025',
+    link: '/blog/engagement',
+    span: 'col-span-2 row-span-2',
+  },
+  {
+    title: 'Title of the Blog Post',
+    excerpt: 'Set a bold vision for your future and act on it today.',
+    image: '/images/blog/blog3.avif',
+    author: 'Renata Hope',
+    date: 'July 18, 2025',
+    link: '/blog/vision',
+    span: 'col-span-2',
+  },
+  {
+    title: 'Title of the Blog Post',
+    excerpt: 'Focus, discipline, and staying aligned with your values.',
+    image: '/images/blog/juice.png',
+    author: 'Angela Smith',
+    date: 'July 24, 2025',
+    link: '/blog/goal',
+    span: 'col-span-1',
+  },
+  {
+    title: 'Title of the Blog Post',
+    excerpt: 'Build unshakable confidence with small daily wins.',
+    image: '/images/blog/bloghero.jpg',
+    author: 'Jason Park',
+    date: 'July 16, 2025',
+    link: '/blog/self-belief',
+    span: 'col-span-1',
+  },
+  {
+    title: 'Title of the Blog Post',
+    excerpt: 'Get inspired by impactful campus projects and stories.',
+    image: '/images/blog/blog7.png',
+    author: 'Tina Patel',
+    date: 'July 25, 2025',
+    link: '/blog/projects',
+    span: 'col-span-2',
+  },
+];
+
+const GridPattern: React.FC = () => {
   return (
-    <main className="min-h-screen w-full bg-white text-black font-poppins">
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 p-6 max-w-screen-xl mx-auto">
-        {/* Left Column - Popular List */}
-        <div className="bg-white shadow p-6 rounded-xl border col-span-1">
-          <h2 className="text-2xl font-semibold text-[#0F1935] mb-6">Popular</h2>
-          <div className="space-y-4">
-            {[
-              "Fruit juices to boost your immune",
-              "Juice variations using avocado",
-              "Simple recipe strawberry juice",
-            ].map((title, i) => (
-              <div key={i} className="flex justify-between items-center border-b pb-2">
-                <p className="text-lg text-[#121212]">{title}</p>
-                <span className="rotate-[-90deg] text-xl">→</span>
-              </div>
-            ))}
-          </div>
-        </div>
+    <div className="w-full min-h-screen bg-[#668890] p-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-screen-2xl mx-auto auto-rows-fr min-h-screen">
+        {blogPosts.map((post, index) => {
+          // Conditional height based on row-span
+          const imageHeight = post.span.includes('row-span-2')
+            ? 'h-72 sm:h-96 md:h-[28rem]'
+            : 'h-48 sm:h-56 md:h-64';
 
-        {/* Middle Column - Featured Article */}
-        <div className="col-span-1 flex flex-col items-start">
-          <div className="bg-[#F5F6F8] rounded-xl overflow-hidden mb-6">
-            <Image
-              src="/images/juice-hero.png"
-              alt="Fruit Combo"
-              width={500}
-              height={300}
-              className="object-cover"
-            />
-            <div className="p-6">
-              <h2 className="text-3xl font-medium text-[#121212]">
-                Fruit combination for daily juice
-              </h2>
-              <p className="text-sm text-[#121212]/70 mt-2">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-              </p>
-              <div className="flex items-center mt-4 gap-2">
-                <div className="w-6 h-6 rounded-full bg-black"></div>
-                <span className="text-sm font-medium">Samantha William</span>
-              </div>
-            </div>
-          </div>
-
-          {/* Trending Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 w-full">
-            {[
-              {
-                title: "Fruit juices to boost your immune",
-                desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-                img: "/images/orange.jpg",
-                bg: "bg-[#F5F6F8]",
-              },
-              {
-                title: "Juice variations using avocado",
-                desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-                img: "/images/avocado.jpg",
-                bg: "bg-[#F5F6F8]",
-              },
-              {
-                title: "Simple recipe strawberry juice",
-                desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-                img: "/images/strawberry.jpg",
-                bg: "bg-[#F5F6F8]",
-              },
-            ].map((item, i) => (
-              <div
-                key={i}
-                className={`rounded-xl overflow-hidden ${item.bg}`}
-              >
+          return (
+            <Link
+              href={post.link}
+              key={index}
+              className={`group relative rounded-xl overflow-hidden bg-white shadow-lg transition-all hover:scale-105 hover:shadow-2xl transform ${post.span} flex flex-col`}
+            >
+              {/* Thumbnail */}
+              <div className={`relative w-full ${imageHeight}`}>
                 <Image
-                  src={item.img}
-                  alt={item.title}
-                  width={400}
-                  height={200}
-                  className="object-cover w-full h-40"
+                  src={post.image}
+                  alt={post.title}
+                  fill
+                  className="object-cover"
                 />
-                <div className="p-4">
-                  <h3 className="font-medium text-lg">{item.title}</h3>
-                  <p className="text-sm text-black/50 mt-1">{item.desc}</p>
+              </div>
+
+              {/* Content */}
+              <div className="p-4 flex flex-col flex-grow">
+                <h3 className="text-xl font-semibold mb-1 group-hover:text-blue-700 transition-colors">
+                  {post.title}
+                </h3>
+                <p className="text-sm text-gray-600 flex-grow">{post.excerpt}</p>
+                <div className="mt-4 text-xs text-gray-500 flex justify-between items-center">
+                  <span>{post.author}</span>
+                  <span>{post.date}</span>
                 </div>
               </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Right Column - Video + Contributors */}
-        <div className="col-span-1 space-y-6">
-          {/* Video Card */}
-          <div className="relative h-[300px] rounded-xl overflow-hidden">
-            <Image
-              src="/images/orange-juice.jpg"
-              alt="Orange Juice"
-              fill
-              className="object-cover"
-            />
-            <div className="absolute inset-0 bg-black/10 backdrop-blur-sm" />
-            <div className="absolute bottom-4 left-6 right-6">
-              <div className="text-white text-3xl font-bold">Simple Orange Juice Recipe</div>
-              <div className="mt-4 h-1 w-full bg-white/20 rounded-full">
-                <div className="h-1 w-[70%] bg-white rounded-full"></div>
-              </div>
-              <div className="text-white text-sm text-right mt-1">19:05</div>
-            </div>
-          </div>
-
-          {/* Top Contributors */}
-          <div className="bg-white shadow p-6 rounded-xl">
-            <h2 className="text-2xl font-semibold text-[#0F1935] mb-6">Top Contributors</h2>
-            <div className="space-y-4">
-              {["Andrea Wise", "Karen Smith", "Samantha William", "Renata Hope", "Angela Smith"].map((name, i) => (
-                <div key={i} className="flex items-center gap-4">
-                  <div className="w-10 h-10 rounded-full bg-[#EC4F3C]" />
-                  <div>
-                    <p className="font-medium text-[#273240]">{name}</p>
-                    <p className="text-sm text-[#2C3A4B]/50">135 articles</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
+            </Link>
+          );
+        })}
       </div>
-    </main>
+    </div>
   );
-}
+};
+
+export default GridPattern;
