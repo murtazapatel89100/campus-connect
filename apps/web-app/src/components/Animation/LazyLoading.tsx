@@ -2,7 +2,7 @@ import { motion, useAnimation } from "framer-motion";
 import React, { useEffect } from "react";
 import { useInView } from "react-intersection-observer";
 import Image from "next/image";
-import { cn } from "../../../lib/utils";
+import { cn } from "../../lib/utils";
 
 type LazyLoadingProps = {
   image: string;
