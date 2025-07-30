@@ -1,4 +1,5 @@
 "use client";
+
 import { CldUploadWidget } from "next-cloudinary";
 
 const Page = () => {
@@ -14,12 +15,16 @@ const Page = () => {
           maxFiles: 1,
           clientAllowedFormats: ["mp4", "webm", "mov"],
         }}
+        onSuccess={(result) => {
+          console.log("Video upload successful!", result);
+          alert("Video uploaded successfully!");
+        }}
       >
         {({ open }) => (
           <button
             type="button"
             className="cursor-pointer backdrop-blur-xl bg-[#555555]/40 text-white p-8 rounded-2xl shadow-xl border border-white/20 ring-1 ring-white/10"
-            onClick={() => open()}
+            onClick={() => open?.()}
           >
             Upload a Video
           </button>

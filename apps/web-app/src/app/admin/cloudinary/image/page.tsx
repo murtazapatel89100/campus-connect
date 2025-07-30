@@ -14,6 +14,10 @@ const Page = () => {
           multiple: false,
           clientAllowedFormats: ["jpg", "jpeg", "png", "webp", "avif", "gif"],
         }}
+        onSuccess={(result) => {
+          console.log("Upload successful!", result);
+          alert("Upload successful!");
+        }}
       >
         {({ open }) => (
           <button
