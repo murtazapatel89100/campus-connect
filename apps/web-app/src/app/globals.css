@@ -28,6 +28,12 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: "Itim";
+  src: url(/fonts/Itim/Itim-Regular.ttf) format("truetype");
+  font-display: swap;
+}
+
 @theme {
   /* Colors */
 
@@ -77,6 +83,7 @@
   --font-family-stick-heading: "Stick No Bills", sans-serif;
   --font-square-peg: "Square Peg", sans-serif;
   --font-gothic-expanded: "Special Gothic Expanded One", sans-serif;
+  --font-itim: "Itim", sans-serif;
 }
 
 @layer base {
