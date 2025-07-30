@@ -1,6 +1,10 @@
 "use client";
 
+<<<<<<< HEAD
 import { cn } from "../../lib/utils";
+=======
+import { cn } from "../../models/lib/utils";
+>>>>>>> e995ec4 (update stepper to handle submit and fix lib)
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
