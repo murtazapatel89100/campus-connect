@@ -14,6 +14,7 @@ const Page = () => {
           multiple: false,
           maxFiles: 1,
           clientAllowedFormats: ["mp4", "webm", "mov"],
+          maxFileSize: 10 * 1024 * 1024,
         }}
         onSuccess={(result) => {
           console.log("Video upload successful!", result);

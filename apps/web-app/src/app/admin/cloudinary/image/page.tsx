@@ -13,6 +13,7 @@ const Page = () => {
           sources: ["local", "url", "camera"],
           multiple: false,
           clientAllowedFormats: ["jpg", "jpeg", "png", "webp", "avif", "gif"],
+          maxFileSize: 2 * 1024 * 1024,
         }}
         onSuccess={(result) => {
           console.log("Upload successful!", result);
