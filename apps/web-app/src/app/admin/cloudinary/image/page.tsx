@@ -1,45 +1,21 @@
 "use client";
-import React, { useState } from "react";
-import { IoMdCloudUpload } from "react-icons/io";
+import { CldUploadWidget } from "next-cloudinary";
 
 const Page = () => {
-  const [fileName, setFileName] = useState("");
   return (
-    <div className="flex items-center justify-center min-h-screen">
-      <div className="backdrop-blur-xl bg-[#555555]/40 text-white p-8 rounded-2xl shadow-xl border border-white/20 ring-1 ring-white/10">
-        <form action="" className="space-y-5">
-          <div>
-            <label className="block mb-1 font-medium">Upload Image</label>
-            <input
-              type="file"
-              accept="image/*"
-              className="w-full rounded-md p-2 bg-white/10 text-white file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-white/20 file:text-white hover:file:bg-white/30"
-            />
-          </div>
-
-          <div>
-            <label className="block mb-1 font-medium">Name of the file</label>
-            <input
-              type="text"
-              value={fileName}
-              onChange={(e) => setFileName(e.target.value)}
-              placeholder="Enter file name"
-              required
-              className="w-full rounded-md p-2 bg-white/10 text-white file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-white/20 file:text-white hover:file:bg-white/30"
-            />
-          </div>
-
-          <div className="flex items-center justify-center">
+    <div className="flex items-center font-itim justify-center min-h-screen">
+      <CldUploadWidget uploadPreset="signed_preset">
+        {({ open }) => {
+          return (
             <button
-              type="submit"
-              className="flex items-center gap-3 px-5 py-3 rounded-xl bg-[#555555]/40 text-white backdrop-blur-md shadow-lg border border-white/20 hover:bg-[#555555]/60 transition duration-200"
+              className="cursor-pointer backdrop-blur-xl bg-[#555555]/40 text-white p-8 rounded-2xl shadow-xl border border-white/20 ring-1 ring-white/10"
+              onClick={() => open()}
             >
-              <IoMdCloudUpload height={20} width={20} />
-              <p className="text-sm font-medium">Upload File</p>
+              Upload an Image
             </button>
-          </div>
-        </form>
-      </div>
+          );
+        }}
+      </CldUploadWidget>
     </div>
   );
 };
