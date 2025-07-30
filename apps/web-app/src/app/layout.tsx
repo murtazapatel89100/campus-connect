@@ -30,7 +30,7 @@ export default function RootLayout({
       >
         <Navbar className="md:hidden" />
         {children}
-        <Footer />
+        {/* <Footer /> */}
       </body>
     </html>
   );
