@@ -7,6 +7,7 @@ import { FaEye } from "react-icons/fa";
 export default function AuditLogsPage() {
   const [logs, setLogs] = useState<any[]>([]);
   const [filteredLogs, setFilteredLogs] = useState<any[]>([]);
+  const [selectedLog, setSelectedLog] = useState<any | null>(null);
 
   useEffect(() => {
     const fetchLogs = async () => {
@@ -28,10 +29,40 @@ export default function AuditLogsPage() {
     }
   };
 
+  const handleDeleteLog = async (logId: string) => {
+    const confirmed = confirm("Delete this specific log?");
+    if (!confirmed) return;
+
+    const res = await fetch(`/api/log-delete/${logId}`, {
+      method: "DELETE",
+    });
+
+    if (res.ok) {
+      setLogs((prev) => prev.filter((log) => log._id !== logId));
+      setFilteredLogs((prev) => prev.filter((log) => log._id !== logId));
+    } else {
+      alert("Failed to delete log");
+    }
+  };
+
+  const getMediaPreview = (log: any) => {
+    const ext = log.entityId.split(".").pop()?.toLowerCase();
+    const cloudName = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME;
+    const isVideo = ["mp4", "webm", "mov"].includes(ext || "");
+
+    const url = `https://res.cloudinary.com/${cloudName}/${isVideo ? "video" : "image"}/upload/${log.entityId}`;
+
+    return isVideo ? (
+      <video src={url} controls className="w-full rounded-lg" />
+    ) : (
+      <img src={url} alt="Uploaded asset" className="w-full rounded-lg" />
+    );
+  };
+  
+
   return (
     <div className="px-8 py-24 font-poppins bg-[#99908B] min-h-screen">
       <div className="flex justify-end mb-6">
-        {/* Clear Logs */}
         <button
           onClick={handleClearLogs}
           className="bg-white px-4 py-2 rounded-lg shadow flex items-center gap-2"
@@ -40,7 +71,6 @@ export default function AuditLogsPage() {
         </button>
       </div>
 
-      {/* Logs Table */}
       <div className="bg-white rounded-2xl p-4 shadow-lg overflow-x-auto">
         <table className="min-w-full text-left">
           <thead className="bg-[#C2BEBE] text-black">
@@ -59,13 +89,13 @@ export default function AuditLogsPage() {
             {filteredLogs.length === 0 ? (
               <tr>
                 <td colSpan={8} className="text-center py-8 text-gray-600">
-                  No logs matched.
+                  Currently there are no logs available.
                 </td>
               </tr>
             ) : (
               filteredLogs.map((log, idx) => (
                 <tr
-                  key={idx}
+                  key={log._id || idx}
                   className="border-b bg-[#DAD2C8] hover:bg-[#c8c0b6]"
                 >
                   <td className="px-4 py-3">{log.username}</td>
@@ -77,16 +107,52 @@ export default function AuditLogsPage() {
                   </td>
                   <td className="px-4 py-3 font-bold">{log.action}</td>
                   <td className="px-4 py-3">
-                    <FaEye className="text-xl cursor-pointer" title="View log" />
+                    <FaEye
+                      className="text-xl cursor-pointer"
+                      title="View log"
+                      onClick={() => setSelectedLog(log)}
+                    />
                   </td>
                   <td className="px-4 py-3">
-                    <BiTrash className="text-xl cursor-pointer" title="Delete log" />
+                    <BiTrash
+                      className="text-xl cursor-pointer"
+                      title="Delete log"
+                      onClick={() => handleDeleteLog(log._id)}
+                    />
                   </td>
                 </tr>
               ))
             )}
           </tbody>
         </table>
+
+        {selectedLog && (
+          <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+            <div className="bg-white rounded-xl p-6 w-full max-w-md relative shadow-2xl">
+              <button
+                onClick={() => setSelectedLog(null)}
+                className="absolute top-2 right-2 text-gray-500 hover:text-black text-lg"
+              >
+                ✕
+              </button>
+
+              <h2 className="text-xl font-semibold mb-4 text-black">
+                Log Details
+              </h2>
+
+              <div className="space-y-2 text-sm text-black">
+                <p><strong>Username:</strong> {selectedLog.username}</p>
+                <p><strong>Entity ID:</strong> {selectedLog.entityId}</p>
+                <p><strong>Browser:</strong> {selectedLog.browser}</p>
+                <p><strong>Environment:</strong> {selectedLog.environment}</p>
+                <p><strong>Timestamp:</strong> {new Date(selectedLog.timestamp).toLocaleString()}</p>
+                <p><strong>Action:</strong> {selectedLog.action}</p>
+              </div>
+
+              <div className="mt-4">{getMediaPreview(selectedLog)}</div>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
