@@ -1,71 +1,92 @@
-// src/app/admin/cloudinary/audit-logs/page.tsx
+"use client";
 
-'use client';
-import { BiFilter } from "react-icons/bi";
-import { FaSearch } from "react-icons/fa";
+import { useEffect, useState } from "react";
+import { BiTrash } from "react-icons/bi";
+import { FaEye } from "react-icons/fa";
 
 export default function AuditLogsPage() {
+  const [logs, setLogs] = useState<any[]>([]);
+  const [filteredLogs, setFilteredLogs] = useState<any[]>([]);
+
+  useEffect(() => {
+    const fetchLogs = async () => {
+      const res = await fetch("/api/audit-logs");
+      const data = await res.json();
+      setLogs(data.logs || []);
+      setFilteredLogs(data.logs || []);
+    };
+    fetchLogs();
+  }, []);
+
+  const handleClearLogs = async () => {
+    const confirmed = confirm("Are you sure you want to clear all logs?");
+    if (!confirmed) return;
+    const res = await fetch("/api/audit-logs", { method: "DELETE" });
+    if (res.ok) {
+      setLogs([]);
+      setFilteredLogs([]);
+    }
+  };
+
   return (
-    <div className="bg-[#99908B] min-h-screen px-4 py-10 font-['Poppins'] text-black">
-      {/* Filter and Search Section */}
-      <div className="flex justify-between items-center mb-6">
-        {/* Filter Button */}
-        <div className="flex items-center bg-white rounded-[12px] px-4 py-2 w-[435px] h-[62px]">
-          <BiFilter className="text-[32px] mr-3" />
-          <span className="text-[20px]">Filter</span>
-        </div>
-
-        {/* Search Box */}
-        <div className="flex items-center bg-white rounded-[20px] px-4 py-2 w-[300px] h-[62px]">
-          <FaSearch className="text-[20px] opacity-50 mr-3" />
-          <input
-            type="text"
-            placeholder="Search Logs Here"
-            className="bg-transparent outline-none text-[20px] opacity-80 w-full"
-          />
-        </div>
-      </div>
-
-      {/* Table Header */}
-      <div className="bg-[#C2BEBE] rounded-t-md grid grid-cols-6 text-center py-3 text-[20px] font-normal">
-        <div>Username</div>
-        <div>Entity ID</div>
-        <div>Browser</div>
-        <div>Environment</div>
-        <div>Timestamp</div>
-        <div>Action</div>
-      </div>
-
-      {/* Log Entries */}
-      <div className="space-y-4">
-        {/* Replace this with .map() for real logs */}
-        {[...Array(7)].map((_, i) => (
-          <div
-            key={i}
-            className="bg-[#DAD2C8] rounded-[20px] px-6 py-4 grid grid-cols-6 text-center text-[18px]"
-          >
-            <div>name</div>
-            <div>image_123</div>
-            <div>Chrome</div>
-            <div>Production</div>
-            <div>2025-07-31 18:40</div>
-            <div className="flex justify-center gap-3">
-              <button title="View">
-                <img src="/icons/eye.png" className="w-6 h-6" />
-              </button>
-              <button title="Delete">
-                <img src="/icons/delete.png" className="w-6 h-6" />
-              </button>
-            </div>
-          </div>
-        ))}
-      </div>
-
-      {/* Clear Logs Button */}
-      <div className="flex justify-end mt-10 pr-10">
-        <button className="bg-white rounded-md px-6 py-2 font-bold text-[20px] shadow">
-          Clear Logs
+    <div className="px-8 py-24 font-poppins bg-[#99908B] min-h-screen">
+      <div className="flex justify-end mb-6">
+        {/* Clear Logs */}
+        <button
+          onClick={handleClearLogs}
+          className="bg-white px-4 py-2 rounded-lg shadow flex items-center gap-2"
+        >
+          <BiTrash /> Clear All Logs
         </button>
+      </div>
+
+      {/* Logs Table */}
+      <div className="bg-white rounded-2xl p-4 shadow-lg overflow-x-auto">
+        <table className="min-w-full text-left">
+          <thead className="bg-[#C2BEBE] text-black">
+            <tr>
+              <th className="px-4 py-3">Username</th>
+              <th className="px-4 py-3">Entity ID</th>
+              <th className="px-4 py-3">Browser</th>
+              <th className="px-4 py-3">Environment</th>
+              <th className="px-4 py-3">Timestamp</th>
+              <th className="px-4 py-3">Action</th>
+              <th className="px-4 py-3">View</th>
+              <th className="px-4 py-3">Delete</th>
+            </tr>
+          </thead>
+          <tbody>
+            {filteredLogs.length === 0 ? (
+              <tr>
+                <td colSpan={8} className="text-center py-8 text-gray-600">
+                  No logs matched.
+                </td>
+              </tr>
+            ) : (
+              filteredLogs.map((log, idx) => (
+                <tr
+                  key={idx}
+                  className="border-b bg-[#DAD2C8] hover:bg-[#c8c0b6]"
+                >
+                  <td className="px-4 py-3">{log.username}</td>
+                  <td className="px-4 py-3">{log.entityId}</td>
+                  <td className="px-4 py-3">{log.browser}</td>
+                  <td className="px-4 py-3">{log.environment}</td>
+                  <td className="px-4 py-3">
+                    {new Date(log.timestamp).toLocaleString()}
+                  </td>
+                  <td className="px-4 py-3 font-bold">{log.action}</td>
+                  <td className="px-4 py-3">
+                    <FaEye className="text-xl cursor-pointer" title="View log" />
+                  </td>
+                  <td className="px-4 py-3">
+                    <BiTrash className="text-xl cursor-pointer" title="Delete log" />
+                  </td>
+                </tr>
+              ))
+            )}
+          </tbody>
+        </table>
       </div>
     </div>
   );
