@@ -10,7 +10,7 @@ export default function AuditLogsPage() {
 
   useEffect(() => {
     const fetchLogs = async () => {
-      const res = await fetch("/api/audit-logs");
+      const res = await fetch("/api/audit-log");
       const data = await res.json();
       setLogs(data.logs || []);
       setFilteredLogs(data.logs || []);
@@ -21,7 +21,7 @@ export default function AuditLogsPage() {
   const handleClearLogs = async () => {
     const confirmed = confirm("Are you sure you want to clear all logs?");
     if (!confirmed) return;
-    const res = await fetch("/api/audit-logs", { method: "DELETE" });
+    const res = await fetch("/api/audit-log", { method: "DELETE" });
     if (res.ok) {
       setLogs([]);
       setFilteredLogs([]);
