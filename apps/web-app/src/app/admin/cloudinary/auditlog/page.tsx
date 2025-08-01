@@ -78,6 +78,7 @@ export default function AuditLogsPage() {
   return (
     <div className="px-8 py-24 font-poppins bg-[#99908B] min-h-screen">
       <div className="flex justify-end mb-6">
+        {/* Clear Logs */}
         <button
           onClick={handleClearLogs}
           className="bg-white px-4 py-2 rounded-lg shadow flex items-center gap-2 font-itim"
@@ -86,6 +87,7 @@ export default function AuditLogsPage() {
         </button>
       </div>
 
+      {/* Logs Table */}
       <div className="bg-white rounded-2xl p-4 shadow-lg overflow-x-auto">
         <table className="min-w-full text-left font-itim">
           <thead className="bg-[#C2BEBE] text-black">
