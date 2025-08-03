@@ -1,8 +1,11 @@
 "use client";
 import Stepper, { Step } from "@/components/ui/stepper/stepper";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useUser } from "@clerk/nextjs";
 
 const page = () => {
+  const { user, isLoaded } = useUser();
+
   const [firstName, setFirstName] = useState("");
   const [middleName, setMiddleName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -31,8 +34,16 @@ const page = () => {
       mobNumber,
       alternateMobNumber,
       email,
+      personalEmail,
     });
   };
+
+  useEffect(() => {
+    if (isLoaded && user) {
+      const primaryEmail = user.emailAddresses[0]?.emailAddress || "";
+      setPersonalEmail(primaryEmail);
+    }
+  }, [isLoaded, user]);
 
   return (
     <div>
