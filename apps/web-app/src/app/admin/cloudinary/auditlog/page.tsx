@@ -50,7 +50,9 @@ export default function AuditLogsPage() {
     const cloudName = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME;
     const isVideo = ["mp4", "webm", "mov"].includes(ext || "");
 
-    const url = `https://res.cloudinary.com/${cloudName}/${isVideo ? "video" : "image"}/upload/${log.entityId}`;
+    const url = `https://res.cloudinary.com/${cloudName}/${
+      isVideo ? "video" : "image"
+    }/upload/${log.entityId}`;
 
     return isVideo ? (
       <video src={url} controls className="w-full rounded-lg" />
@@ -58,7 +60,6 @@ export default function AuditLogsPage() {
       <img src={url} alt="Uploaded asset" className="w-full rounded-lg" />
     );
   };
-  
 
   return (
     <div className="px-8 py-24 font-poppins bg-[#99908B] min-h-screen">
@@ -75,14 +76,14 @@ export default function AuditLogsPage() {
         <table className="min-w-full text-left">
           <thead className="bg-[#C2BEBE] text-black">
             <tr>
-              <th className="px-4 py-3">Username</th>
+              <th className="px-4 py-3 rounded-tl-xl">Username</th>
               <th className="px-4 py-3">Entity ID</th>
               <th className="px-4 py-3">Browser</th>
               <th className="px-4 py-3">Environment</th>
               <th className="px-4 py-3">Timestamp</th>
               <th className="px-4 py-3">Action</th>
               <th className="px-4 py-3">View</th>
-              <th className="px-4 py-3">Delete</th>
+              <th className="px-4 py-3 rounded-tr-xl">Delete</th>
             </tr>
           </thead>
           <tbody>
@@ -141,12 +142,25 @@ export default function AuditLogsPage() {
               </h2>
 
               <div className="space-y-2 text-sm text-black">
-                <p><strong>Username:</strong> {selectedLog.username}</p>
-                <p><strong>Entity ID:</strong> {selectedLog.entityId}</p>
-                <p><strong>Browser:</strong> {selectedLog.browser}</p>
-                <p><strong>Environment:</strong> {selectedLog.environment}</p>
-                <p><strong>Timestamp:</strong> {new Date(selectedLog.timestamp).toLocaleString()}</p>
-                <p><strong>Action:</strong> {selectedLog.action}</p>
+                <p>
+                  <strong>Username:</strong> {selectedLog.username}
+                </p>
+                <p>
+                  <strong>Entity ID:</strong> {selectedLog.entityId}
+                </p>
+                <p>
+                  <strong>Browser:</strong> {selectedLog.browser}
+                </p>
+                <p>
+                  <strong>Environment:</strong> {selectedLog.environment}
+                </p>
+                <p>
+                  <strong>Timestamp:</strong>{" "}
+                  {new Date(selectedLog.timestamp).toLocaleString()}
+                </p>
+                <p>
+                  <strong>Action:</strong> {selectedLog.action}
+                </p>
               </div>
 
               <div className="mt-4">{getMediaPreview(selectedLog)}</div>

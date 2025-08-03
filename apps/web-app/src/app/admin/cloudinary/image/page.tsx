@@ -1,17 +1,14 @@
 "use client";
 
 import { CldUploadWidget } from "next-cloudinary";
-import { useSession } from "next-auth/react";
 import { getBrowserAndOS } from "@/lib/cloudinary/getBrowserOS";
 const Page = () => {
-  const { data: session } = useSession();
-
   const handleAuditLog = async (result: any) => {
     const publicId = result?.info?.public_id;
     if (!publicId) return;
 
     const payload = {
-      username: session?.user?.name || "dummy_user", // ✅ hardcoded fallback
+      username: "dummy_user", // ✅ hardcoded fallback
       entityId: publicId,
       environment: process.env.NODE_ENV || "development",
       browser: getBrowserAndOS(navigator.userAgent),
