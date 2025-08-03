@@ -17,21 +17,15 @@ export default function AuthPage() {
   const [showPassword, setShowPassword] = useState(false);
   const [oneTimePassword, setOneTimePassword] = useState("");
   const [isVerificationStep, setIsVerificationStep] = useState(false);
-  const [googleSignUp, setgoogleSignUp] = useState("");
 
   const { isLoaded, signUp, setActive } = useSignUp();
   const router = useRouter();
   const searchParams = useSearchParams();
 
-  // On mount, read OTP flag and email from query params to control UI state
   useEffect(() => {
     if (searchParams) {
       const otpParam = searchParams.get("otp");
       const emailParam = searchParams.get("email");
-      const GoogleParam = searchParams.get("google");
-      if (GoogleParam === "true") {
-        console.log("Google Sign Up initiated");
-      }
 
       if (otpParam === "true") {
         setIsVerificationStep(true);
@@ -49,7 +43,7 @@ export default function AuthPage() {
     e.preventDefault();
     setError("");
 
-    if (!rememberMe) {
+    if (!rememberMe && !isVerificationStep) {
       setError("You must agree to the Terms and Conditions to continue.");
       return;
     }
@@ -122,7 +116,7 @@ export default function AuthPage() {
       signUp.authenticateWithRedirect({
         strategy: "oauth_google",
         redirectUrl: "/sso-callback",
-        redirectUrlComplete: "/registration?google=true",
+        redirectUrlComplete: "/registration/details",
       });
     }
   };
@@ -151,12 +145,11 @@ export default function AuthPage() {
             </Alert>
           )}
 
-          <h1 className="text-4xl mt-10 text-center font-bold text-black mb-6">
-            {isVerificationStep ? "Verify Your Email" : "Create Your Account"}
-          </h1>
-
           {!isVerificationStep && (
             <>
+              <h1 className="text-4xl mt-10 text-center font-bold text-black mb-6">
+                "Create Your Account
+              </h1>
               {/* EMAIL AND PASSWORD INPUTS */}
               <div className="w-full space-y-4">
                 <div>
@@ -228,7 +221,10 @@ export default function AuthPage() {
           )}
 
           {isVerificationStep && (
-            <div className="w-full">
+            <div className="w-full my-24">
+              <h1 className="text-4xl mt-10 text-center font-bold text-black mb-6">
+                Verify Your Email
+              </h1>
               <label className="block font-medium text-[#1E1E1E] mb-1">
                 OTP
               </label>
@@ -241,50 +237,60 @@ export default function AuthPage() {
                 placeholder="Enter the verification code sent to your email"
                 disabled={!isLoaded}
               />
+              <button
+                type="submit"
+                className="w-full mt-10 bg-[#1E1E1E] cursor-pointer hover:scale-105 transition-transform text-white font-semibold py-3 rounded-md"
+              >
+                Verify
+              </button>
             </div>
           )}
 
-          <button
-            type="submit"
-            className="w-full bg-[#1E1E1E] cursor-pointer hover:scale-105 transition-transform text-white font-semibold py-3 rounded-md"
-            disabled={!isLoaded}
-          >
-            {isVerificationStep ? "Verify" : "Sign Up"}
-          </button>
+          {!isVerificationStep && (
+            <>
+              <button
+                type="submit"
+                className="w-full bg-[#1E1E1E] cursor-pointer hover:scale-105 transition-transform text-white font-semibold py-3 rounded-md"
+                disabled={!isLoaded}
+              >
+                Sign Up
+              </button>
 
-          <div className="w-full text-center font-semibold text-black mx-auto">
-            OR
-          </div>
+              <div className="w-full text-center font-semibold text-black mx-auto">
+                OR
+              </div>
 
-          <button
-            type="button"
-            onClick={handleGoogleSignIn}
-            disabled={!isLoaded || !signUp}
-            className="w-full hover:shadow hover:scale-105 transition-transform cursor-pointer flex items-center justify-center gap-3 border border-[#5B5B5B] rounded-md py-3 bg-white/30 backdrop-blur-sm"
-          >
-            <Image
-              src="/icons/google-icon.svg"
-              alt="Google"
-              width={18}
-              height={18}
-            />
-            <span className="font-semibold text-sm text-[#1A1C1E]">
-              Sign up with Google
-            </span>
-          </button>
+              <button
+                type="button"
+                onClick={handleGoogleSignIn}
+                disabled={!isLoaded || !signUp}
+                className="w-full hover:shadow hover:scale-105 transition-transform cursor-pointer flex items-center justify-center gap-3 border border-[#5B5B5B] rounded-md py-3 bg-white/30 backdrop-blur-sm"
+              >
+                <Image
+                  src="/icons/google-icon.svg"
+                  alt="Google"
+                  width={18}
+                  height={18}
+                />
+                <span className="font-semibold text-sm text-[#1A1C1E]">
+                  Sign up with Google
+                </span>
+              </button>
 
-          <div className="mb-10 flex justify-center items-center text-sm gap-2 flex-wrap text-center">
-            <span className="text-black font-semibold">
-              Already have an account?
-            </span>
-            <button
-              type="button"
-              className="text-[#088D8D] cursor-pointer hover:shadow hover:underline hover:scale-105 transition-transform font-extrabold"
-              onClick={() => router.push("/sign-in")}
-            >
-              Sign In
-            </button>
-          </div>
+              <div className="mb-10 flex justify-center items-center text-sm gap-2 flex-wrap text-center">
+                <span className="text-black font-semibold">
+                  Already have an account?
+                </span>
+                <button
+                  type="button"
+                  className="text-[#088D8D] cursor-pointer hover:shadow hover:underline hover:scale-105 transition-transform font-extrabold"
+                  onClick={() => router.push("/sign-in")}
+                >
+                  Sign In
+                </button>
+              </div>
+            </>
+          )}
         </form>
       </div>
     </div>
