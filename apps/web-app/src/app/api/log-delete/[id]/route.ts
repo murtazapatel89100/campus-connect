@@ -4,12 +4,27 @@ import connectDB from "@/lib/mongodb/connectdb";
 import { AuditLog } from "@/lib/mongodb/models/auditLogModel";
 import { NextResponse } from "next/server";
 
-export async function DELETE(_: Request, { params }: { params: { id: string } }) {
+export async function DELETE(
+  request: Request,
+  { params }: { params: { id: string } }
+) {
   try {
     await connectDB();
-    await AuditLog.findByIdAndDelete(params.id);
+    const url = new URL(request.url);
+    const id = url.pathname.split("/").pop();
+
+    if (!id) {
+      return NextResponse.json(
+        { success: false, error: "Missing ID" },
+        { status: 400 }
+      );
+    }
+    await AuditLog.findByIdAndDelete(id);
     return NextResponse.json({ success: true });
   } catch (error) {
-    return NextResponse.json({ success: false, error: "Failed to delete log" }, { status: 500 });
+    return NextResponse.json(
+      { success: false, error: "Failed to delete log" },
+      { status: 500 }
+    );
   }
 }

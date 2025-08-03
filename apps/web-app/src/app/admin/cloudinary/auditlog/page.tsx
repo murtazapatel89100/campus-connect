@@ -33,9 +33,7 @@ export default function AuditLogsPage() {
     const confirmed = confirm("Delete this specific log?");
     if (!confirmed) return;
 
-    const res = await fetch(`/api/log-delete/${logId}`, {
-      method: "DELETE",
-    });
+    const res = await fetch(`/api/log-delete/${logId}`, { method: "DELETE" });
 
     if (res.ok) {
       setLogs((prev) => prev.filter((log) => log._id !== logId));
