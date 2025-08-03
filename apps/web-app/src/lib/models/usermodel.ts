@@ -12,7 +12,7 @@ const userSchema = new Schema({
   birthdate: { type: Date, required: true },
   gender: { type: String, enum: ["male", "female", "other"], required: true },
   branch: { type: String, required: true },
-  currentYear: { type: Number, enum: ["1", "2", "3", "4"], required: true },
+  currentYear: { type: Number, enum: [1, 2, 3, 4], required: true },
   rollNo: { type: String, required: true, unique: true },
   mobileNo: { type: String, required: true, unique: true },
   mobileNo2: { type: String, unique: true, required: false },

@@ -14,6 +14,7 @@ const page = () => {
   const [mobNumber, setMobNumber] = useState("");
   const [alternateMobNumber, setAlternateMobNumber] = useState("");
   const [email, setEmail] = useState("");
+  const [personalEmail, setPersonalEmail] = useState("");
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
