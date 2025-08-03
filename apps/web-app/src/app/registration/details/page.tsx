@@ -181,15 +181,15 @@ const page = () => {
                     required
                     value={year}
                     onChange={(e) => setYear(e.target.value)}
-                    className="w-full appearance-none px-4 py-3 border border-transparent bg-gray-200 backdrop-blur-3xl rounded-xl text-sm text-[#1E1E1E] transition-all duration-300 focus:border-[#5B5B5B] focus:bg-white focus:backdrop-blur-0 pr-10"
+                    className="..."
                   >
                     <option value="" disabled>
                       Eg:- FY/SY/TY/4th Year
                     </option>
-                    <option value="male">Male</option>
-                    <option value="female">Female</option>
-                    <option value="non-binary">Non-binary</option>
-                    <option value="prefer-not-to-say">Prefer not to say</option>
+                    <option value="1">First Year</option>
+                    <option value="2">Second Year</option>
+                    <option value="3">Third Year</option>
+                    <option value="4">Fourth Year</option>
                   </select>
 
                   {/* Custom dropdown arrow */}
