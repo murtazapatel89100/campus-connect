@@ -2,9 +2,12 @@
 import Stepper, { Step } from "@/components/ui/stepper/stepper";
 import React, { useEffect, useState } from "react";
 import { useUser } from "@clerk/nextjs";
+import { toast } from "sonner";
+import { AuthRedirect } from "@/hooks/checkauth";
 
 const page = () => {
   const { user, isLoaded } = useUser();
+  AuthRedirect();
 
   const [firstName, setFirstName] = useState("");
   const [middleName, setMiddleName] = useState("");
@@ -51,7 +54,6 @@ const page = () => {
       const result = await res.json();
 
       if (!res.ok) {
-        console.error("Validation/server error:", result);
         alert(
           "Something went wrong: " +
             JSON.stringify(result.errors || result.message)
@@ -59,27 +61,11 @@ const page = () => {
         return;
       }
 
-      console.log("User created:", result.user);
-      alert("User successfully submitted!");
+      toast("User has been created.");
     } catch (err) {
       console.error("Network error:", err);
       alert("Failed to submit. Please try again.");
     }
-
-    console.log({
-      firstName,
-      middleName,
-      lastName,
-      birthDate,
-      gender,
-      branch,
-      year,
-      rollNo,
-      mobNumber,
-      alternateMobNumber,
-      email,
-      personalEmail,
-    });
   };
 
   useEffect(() => {
