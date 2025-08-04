@@ -80,14 +80,14 @@ export default function AuditLogsPage() {
       <div className="flex justify-end mb-6">
         <button
           onClick={handleClearLogs}
-          className="bg-white px-4 py-2 rounded-lg shadow flex items-center gap-2"
+          className="bg-white px-4 py-2 rounded-lg shadow flex items-center gap-2 font-itim"
         >
           <BiTrash /> Clear All Logs
         </button>
       </div>
 
       <div className="bg-white rounded-2xl p-4 shadow-lg overflow-x-auto">
-        <table className="min-w-full text-left">
+        <table className="min-w-full text-left font-itim">
           <thead className="bg-[#C2BEBE] text-black">
             <tr>
               <th className="px-4 py-3 rounded-tl-xl">Username</th>
@@ -97,7 +97,7 @@ export default function AuditLogsPage() {
               <th className="px-4 py-3">Timestamp</th>
               <th className="px-4 py-3">Action</th>
               <th className="px-4 py-3">View</th>
-              <th className="px-4 py-3 rounded-tr-xl">Delete</th>
+              <th className="px-4 py-3 rounded-tr-xl">Delete </th>
             </tr>
           </thead>
           <tbody>
@@ -155,26 +155,15 @@ export default function AuditLogsPage() {
                 Log Details
               </h2>
 
-              <div className="space-y-2 text-sm text-black">
+              <div className="space-y-2 text-sm text-black font-itim font-extrabold">
+                <p>Username: {selectedLog.username}</p>
+                <p>Entity ID: {selectedLog.entityId}</p>
+                <p>Browser: {selectedLog.browser}</p>
+                <p>Environment: {selectedLog.environment}</p>
                 <p>
-                  <strong>Username:</strong> {selectedLog.username}
+                  Timestamp: {new Date(selectedLog.timestamp).toLocaleString()}
                 </p>
-                <p>
-                  <strong>Entity ID:</strong> {selectedLog.entityId}
-                </p>
-                <p>
-                  <strong>Browser:</strong> {selectedLog.browser}
-                </p>
-                <p>
-                  <strong>Environment:</strong> {selectedLog.environment}
-                </p>
-                <p>
-                  <strong>Timestamp:</strong>{" "}
-                  {new Date(selectedLog.timestamp).toLocaleString()}
-                </p>
-                <p>
-                  <strong>Action:</strong> {selectedLog.action}
-                </p>
+                <p>Action: {selectedLog.action}</p>
               </div>
 
               <div className="mt-4">{getMediaPreview(selectedLog)}</div>
