@@ -19,8 +19,52 @@ const page = () => {
   const [email, setEmail] = useState("");
   const [personalEmail, setPersonalEmail] = useState("");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    const data = {
+      personalEmail,
+      universityEmail: email,
+      name: {
+        firstName,
+        middleName,
+        lastName,
+      },
+      birthdate: birthDate,
+      gender,
+      branch,
+      currentYear: year,
+      rollNo,
+      mobileNo: mobNumber,
+      mobileNo2: alternateMobNumber || undefined,
+    };
+
+    try {
+      const res = await fetch("/api/user-data", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+
+      const result = await res.json();
+
+      if (!res.ok) {
+        console.error("Validation/server error:", result);
+        alert(
+          "Something went wrong: " +
+            JSON.stringify(result.errors || result.message)
+        );
+        return;
+      }
+
+      console.log("User created:", result.user);
+      alert("User successfully submitted!");
+    } catch (err) {
+      console.error("Network error:", err);
+      alert("Failed to submit. Please try again.");
+    }
 
     console.log({
       firstName,
@@ -41,7 +85,7 @@ const page = () => {
   useEffect(() => {
     if (isLoaded && user) {
       const primaryEmail = user.emailAddresses[0]?.emailAddress || "";
-      setPersonalEmail(primaryEmail);
+      setEmail(primaryEmail);
     }
   }, [isLoaded, user]);
 
@@ -265,13 +309,13 @@ const page = () => {
 
                 <div>
                   <label className="block font-bold text-[#1E1E1E] mb-1">
-                    E-mail:- University provided
+                    E-mail:- Personal
                   </label>
                   <input
                     type="email"
                     required
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
+                    value={personalEmail}
+                    onChange={(e) => setPersonalEmail(e.target.value)}
                     className="w-full px-4 py-3 border border-transparent bg-gray-200 backdrop-blur-3xl rounded-xl text-sm placeholder-[#5B5B5B] transition-all duration-300 focus:border-[#5B5B5B] focus:bg-white focus:backdrop-blur-0"
                     placeholder="Enter your email id"
                   />
