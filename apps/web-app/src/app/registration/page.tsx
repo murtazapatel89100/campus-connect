@@ -148,7 +148,7 @@ export default function AuthPage() {
           {!isVerificationStep && (
             <>
               <h1 className="text-4xl mt-10 text-center font-bold text-black mb-6">
-                "Create Your Account
+                Create Your Account
               </h1>
               {/* EMAIL AND PASSWORD INPUTS */}
               <div className="w-full space-y-4">
