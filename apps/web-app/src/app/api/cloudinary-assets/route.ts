@@ -16,12 +16,12 @@ export async function GET() {
   try {
     const [images, videos] = await Promise.all([
       cloudinary.search
-        .expression('folder:"campus-connect" AND resource_type:image')
+        .expression('folder:"campus connect" AND resource_type:image')
         .sort_by("created_at", "desc")
         .max_results(100)
         .execute(),
       cloudinary.search
-        .expression('folder:"campus-connect" AND resource_type:video')
+        .expression('folder:"campus connect" AND resource_type:video')
         .sort_by("created_at", "desc")
         .max_results(100)
         .execute(),
