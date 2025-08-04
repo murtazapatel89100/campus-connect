@@ -22,10 +22,20 @@ export default function AuditLogsPage() {
   const handleClearLogs = async () => {
     const confirmed = confirm("Are you sure you want to clear all logs?");
     if (!confirmed) return;
-    const res = await fetch("/api/audit-log", { method: "DELETE" });
+
+    const res = await fetch("/api/log-delete", {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ deleteAll: true }),
+    });
+
     if (res.ok) {
       setLogs([]);
       setFilteredLogs([]);
+    } else {
+      alert("Failed to clear all logs");
     }
   };
 
@@ -33,7 +43,13 @@ export default function AuditLogsPage() {
     const confirmed = confirm("Delete this specific log?");
     if (!confirmed) return;
 
-    const res = await fetch(`/api/log-delete/${logId}`, { method: "DELETE" });
+    const res = await fetch("/api/log-delete", {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ id: logId }),
+    });
 
     if (res.ok) {
       setLogs((prev) => prev.filter((log) => log._id !== logId));
