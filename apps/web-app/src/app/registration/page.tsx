@@ -127,7 +127,7 @@ export default function AuthPage() {
         <div className="hidden md:block w-1/2"></div>
 
         <form
-          className="relative z-10 w-full max-w-lg p-10 m-4 md:m-40 flex flex-col items-center justify-center space-y-5 rounded-xl bg-white/20 backdrop-blur-lg border border-white/30 shadow-lg"
+          className="relative z-10 w-full max-w-lg p-10 m-4 md:my-28 flex flex-col items-center justify-center space-y-5 rounded-xl bg-white/20 backdrop-blur-lg border border-white/30 shadow-lg"
           onSubmit={handleSubmit}
         >
           {error && (
