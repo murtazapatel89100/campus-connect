@@ -3,11 +3,9 @@ import Stepper, { Step } from "@/components/ui/stepper/stepper";
 import React, { useEffect, useState } from "react";
 import { useUser } from "@clerk/nextjs";
 import { toast } from "sonner";
-import { AuthRedirect } from "@/hooks/checkauth";
 
 const page = () => {
   const { user, isLoaded } = useUser();
-  AuthRedirect();
 
   const [firstName, setFirstName] = useState("");
   const [middleName, setMiddleName] = useState("");
