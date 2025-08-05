@@ -246,7 +246,7 @@ const page = () => {
                   type="text"
                   required
                   value={rollNo}
-                  onChange={(e) => setRollNo(e.target.value)}
+                  onChange={(e) => setRollNo(e.target.value.toUpperCase())}
                   className="w-full px-4 py-3 border border-transparent bg-gray-200 backdrop-blur-3xl rounded-xl text-sm placeholder-[#5B5B5B] transition-all duration-300 focus:border-[#5B5B5B] focus:bg-white focus:backdrop-blur-0"
                   placeholder="Eg:- B21016"
                 />
