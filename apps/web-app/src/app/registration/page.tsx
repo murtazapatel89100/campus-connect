@@ -7,7 +7,20 @@ import Link from "next/link";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { MdErrorOutline } from "react-icons/md";
 import { IoIosEye, IoIosEyeOff } from "react-icons/io";
-import { log } from "console";
+import {
+  AlertDialogHeader,
+  AlertDialogFooter,
+} from "@/components/ui/alert-dialogue/alert-dialog";
+import {
+  AlertDialog,
+  AlertDialogContent,
+  AlertDialogTitle,
+  AlertDialogDescription,
+  AlertDialogCancel,
+  AlertDialogAction,
+} from "@radix-ui/react-alert-dialog";
+import { cn } from "@/lib/utils";
+import { buttonVariants } from "@/components/ui/Buttons";
 
 export default function AuthPage() {
   const [email, setEmail] = useState("");
@@ -17,6 +30,7 @@ export default function AuthPage() {
   const [showPassword, setShowPassword] = useState(false);
   const [oneTimePassword, setOneTimePassword] = useState("");
   const [isVerificationStep, setIsVerificationStep] = useState(false);
+  const [breachalert, setBreachAlert] = useState(false);
 
   const { isLoaded, signUp, setActive } = useSignUp();
   const router = useRouter();
@@ -26,6 +40,7 @@ export default function AuthPage() {
     if (searchParams) {
       const otpParam = searchParams.get("otp");
       const emailParam = searchParams.get("email");
+      const breachparam = searchParams.get("breach");
 
       if (otpParam === "true") {
         setIsVerificationStep(true);
@@ -35,6 +50,10 @@ export default function AuthPage() {
 
       if (emailParam) {
         setEmail(emailParam);
+      }
+
+      if (breachparam === "true") {
+        setBreachAlert(true);
       }
     }
   }, [searchParams]);
@@ -125,6 +144,38 @@ export default function AuthPage() {
     <div className="relative min-h-screen bg-[#1A2328] flex items-center justify-center px-4">
       <div className="h-fit w-[90vw] bg-[url('/images/hero.png')] bg-cover bg-center flex flex-col md:flex-row items-center justify-center">
         <div className="hidden md:block w-1/2"></div>
+
+        <AlertDialog open={breachalert} onOpenChange={setBreachAlert}>
+          <AlertDialogContent className="bg-[#9EBCB8]/60 backdrop-blur-lg border absolute z-20 border-white/30 shadow-lg text-black rounded-2xl p-10 max-w-sm md:max-w-lg w-full">
+            <AlertDialogHeader className="items-center font-albert-sans text-center">
+              <AlertDialogTitle className="text-xl font-bold">
+                Security Alert
+              </AlertDialogTitle>
+              <AlertDialogDescription className="font-medium text-center mt-2">
+                You need to sign in or create an account to access and use all
+                features of the app.
+              </AlertDialogDescription>
+            </AlertDialogHeader>
+
+            <AlertDialogFooter className="mt-6 font-albert-sans flex justify-center gap-4">
+              <AlertDialogCancel
+                className="bg-white/20 backdrop-blur-lg border py-1 border-white/30 px-3 cursor-pointer hover:border-white hover:bg-black hover:text-white transition-colors transition-border duration-300 ease-in-out rounded-md"
+                onClick={() => setBreachAlert(false)}
+              >
+                Sign Up
+              </AlertDialogCancel>
+              <AlertDialogAction
+                className="bg-white/20 backdrop-blur-lg border border-white/30 px-3 cursor-pointer hover:border-white hover:bg-black hover:text-white transition-colors transition-border duration-300 ease-in-out rounded-md"
+                onClick={() => {
+                  setBreachAlert(false);
+                  console.log("done");
+                }}
+              >
+                Sign In
+              </AlertDialogAction>
+            </AlertDialogFooter>
+          </AlertDialogContent>
+        </AlertDialog>
 
         <form
           className="relative z-10 w-full max-w-lg p-10 m-4 md:my-28 flex flex-col items-center justify-center space-y-5 rounded-xl bg-white/20 backdrop-blur-lg border border-white/30 shadow-lg"
