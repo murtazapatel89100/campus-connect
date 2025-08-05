@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
 import { useSignUp } from "@clerk/nextjs";
 import { useRouter, useSearchParams } from "next/navigation";
 import Image from "next/image";
@@ -22,7 +22,8 @@ import {
 import { cn } from "@/lib/utils";
 import { buttonVariants } from "@/components/ui/Buttons";
 
-export default function AuthPage() {
+// Separate component that uses useSearchParams
+function AuthPageContent() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [rememberMe, setRememberMe] = useState(false);
@@ -345,5 +346,36 @@ export default function AuthPage() {
         </form>
       </div>
     </div>
+  );
+}
+
+// Loading fallback component
+function LoadingFallback() {
+  return (
+    <div className="relative min-h-screen bg-[#1A2328] flex items-center justify-center px-4">
+      <div className="h-fit w-[90vw] bg-[url('/images/hero.png')] bg-cover bg-center flex flex-col md:flex-row items-center justify-center">
+        <div className="hidden md:block w-1/2"></div>
+        <div className="relative z-10 w-full max-w-lg p-10 m-4 md:my-28 flex flex-col items-center justify-center space-y-5 rounded-xl bg-white/20 backdrop-blur-lg border border-white/30 shadow-lg">
+          <div className="animate-pulse">
+            <div className="h-8 bg-gray-300 rounded w-48 mb-6 mx-auto"></div>
+            <div className="space-y-4 w-full">
+              <div className="h-4 bg-gray-300 rounded w-16"></div>
+              <div className="h-12 bg-gray-300 rounded w-full"></div>
+              <div className="h-4 bg-gray-300 rounded w-20"></div>
+              <div className="h-12 bg-gray-300 rounded w-full"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// Main component that wraps AuthPageContent in Suspense
+export default function AuthPage() {
+  return (
+    <Suspense fallback={<LoadingFallback />}>
+      <AuthPageContent />
+    </Suspense>
   );
 }
