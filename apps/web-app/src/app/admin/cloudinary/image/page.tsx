@@ -2,13 +2,33 @@
 
 import { CldUploadWidget } from "next-cloudinary";
 import { getBrowserAndOS } from "@/lib/cloudinary/getBrowserOS";
+import { useUser } from "@clerk/nextjs";
+import { useState, useEffect } from "react";
+
 const Page = () => {
+  const { user, isLoaded } = useUser();
+  const [name, setName] = useState("");
+
+  useEffect(() => {
+    console.log("Effect running:");
+    console.log("isLoaded:", isLoaded);
+    console.log("user:", user);
+
+    if (isLoaded && user) {
+      const username = user.fullName || "";
+      console.log("Setting name:", username);
+      setName(username);
+    }
+  }, [isLoaded, user]);
+
   const handleAuditLog = async (result: any) => {
     const publicId = result?.info?.public_id;
     if (!publicId) return;
 
-    const payload = {
-      username: "dummy_user", // ✅ hardcoded fallback
+    const username = user?.fullName || "";
+
+    const data = {
+      username: username,
       entityId: publicId,
       environment: process.env.NODE_ENV || "development",
       browser: getBrowserAndOS(navigator.userAgent),
@@ -16,14 +36,28 @@ const Page = () => {
       action: "upload",
     };
 
-    console.log("Sending audit log:", payload);
+    console.log("Sending audit log:", data);
 
-    await fetch("/api/audit-log", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(payload),
-    });
+    try {
+      await fetch("/api/audit-log", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+      console.log("Audit log sent successfully");
+    } catch (error) {
+      console.error("Failed to send audit log:", error);
+    }
   };
+
+  // Show loading state while user data is loading
+  if (!isLoaded) {
+    return (
+      <div className="flex flex-col items-center font-itim justify-center min-h-screen gap-4">
+        <div className="text-white">Loading...</div>
+      </div>
+    );
+  }
 
   return (
     <div className="flex flex-col items-center font-itim justify-center min-h-screen gap-4">
