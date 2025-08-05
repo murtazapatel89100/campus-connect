@@ -19,21 +19,6 @@ export default function GreenSection() {
               university community.
             </p>
           </div>
-
-          {/* Right: Hanging Card */}
-          {/* <div className="flex-1 flex justify-center relative -mt-20 lg:mt-0">
-            <div className="relative">
-              <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-full rounded-full z-0" />
-              <div className="z-10">
-                <StudentIDCard
-                  name="John Doe"
-                  program="AI & DS"
-                  rollNumber="GHR2023AIDS001"
-                  dob="01/01/2005"
-                />
-              </div>
-            </div>
-          </div> */}
         </div>
       </section>
 

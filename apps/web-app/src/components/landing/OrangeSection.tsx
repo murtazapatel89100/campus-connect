@@ -1,8 +1,9 @@
 "use client";
 
 import LazyLoading from "@/components/Animation/LazyLoading";
-import { BannerButton } from "@/components/ui/Buttons";
 import Image from "next/image";
+import { buttonVariants } from "../ui/Buttons";
+import { cn } from "@/lib/utils";
 
 export default function OrangeSection() {
   const content = [
@@ -79,7 +80,13 @@ export default function OrangeSection() {
 
           {/* CTA Button */}
           <div className="mt-6">
-            <BannerButton variant="tertiary" text="SEE DOCUMENTATION" />
+            <button
+              className={cn(
+                buttonVariants({ variant: "tertiary", size: "lg" })
+              )}
+            >
+              READ DOCUMENTATION
+            </button>
           </div>
         </div>
       </section>

@@ -1,6 +1,7 @@
 "use client";
 
-import { BannerButton } from "@/components/ui/Buttons";
+import { buttonVariants } from "@/components/ui/Buttons";
+import { cn } from "@/lib/utils";
 import Link from "next/link";
 
 export default function Hero() {
@@ -21,17 +22,21 @@ export default function Hero() {
         </p>
 
         <div className="mt-10 flex flex-wrap justify-center gap-4 sm:gap-8">
-          <Link href={`/registration`}>
-            <BannerButton variant="primary" text="Sign Up" />
+          <Link
+            className={cn(buttonVariants({ size: `lg` }))}
+            href={`/registration`}
+          >
+            Sign Up
           </Link>
 
-          <Link href={`#`}>
-            <BannerButton variant="secondary" text="SIGN IN" />
+          <Link className={cn(buttonVariants({ size: `lg` }))} href={`#`}>
+            SIGN IN
           </Link>
         </div>
       </div>
 
       {/* Bottom Wave (Green) */}
+
       <div className="pointer-events-none select-none absolute bottom-[-2px] left-0 w-full overflow-hidden leading-none">
         <img
           src="/waves/wave_green.svg"
