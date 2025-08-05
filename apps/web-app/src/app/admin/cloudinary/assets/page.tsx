@@ -130,7 +130,7 @@ export default function ViewAssets() {
                 <p>{error}</p>
                 <button
                   onClick={() => window.location.reload()}
-                  className="mt-4 bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg transition-colors"
+                  className="mt-4 bg-red-600 hover:bg-red-700 cursor-pointer text-white px-4 py-2 rounded-lg transition-colors"
                 >
                   Retry
                 </button>
