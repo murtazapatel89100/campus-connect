@@ -1,6 +1,6 @@
 "use client";
 
-import LazyLoading from "@/components/Animation/LazyLoading";
+import LazyLoading from "@/components/Animation/LazyImage";
 import Image from "next/image";
 import { buttonVariants } from "../ui/Buttons";
 import { cn } from "@/lib/utils";
