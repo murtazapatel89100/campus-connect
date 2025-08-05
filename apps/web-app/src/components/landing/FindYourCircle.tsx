@@ -2,7 +2,7 @@
 import { useEffect } from "react";
 import { useInView } from "react-intersection-observer";
 import { useAnimation } from "framer-motion";
-import LazyLoading from "@/components/Animation/LazyLoading";
+import LazyLoading from "@/components/Animation/LazyImage";
 
 export default function FindYourCircle() {
   const controls = useAnimation();
