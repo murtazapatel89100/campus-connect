@@ -9,6 +9,14 @@ function Home() {
   return (
     <div className="min-h-screen">
       <Hero />
+      <div className="w-full overflow-hidden pointer-events-none select-none">
+        <img
+          src="/waves/wave_green.svg"
+          alt="greenWave"
+          className="w-full h-auto"
+          draggable="false"
+        />
+      </div>
       <GreenSection />
       <FindYourCircle />
       <OrangeSection />
