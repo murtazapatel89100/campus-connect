@@ -19,6 +19,8 @@ import {
   AlertDialogCancel,
   AlertDialogAction,
 } from "@radix-ui/react-alert-dialog";
+import { cn } from "@/lib/utils";
+import { buttonVariants } from "@/components/ui/Buttons";
 
 // Separate component that uses useSearchParams
 function AuthPageContent() {
