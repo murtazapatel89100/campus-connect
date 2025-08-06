@@ -1,9 +1,9 @@
-import FaqSection from "@/Pages/landing/FaqSection";
-import FindYourCircle from "@/Pages/landing/FindYourCircle";
-import GreenSection from "@/Pages/landing/GreenSection";
-import Hero from "@/Pages/landing/Hero";
-import OrangeSection from "@/Pages/landing/OrangeSection";
-import TeamSection from "@/Pages/landing/TeamSection";
+import FaqSection from "@/components/landing/FaqSection";
+import FindYourCircle from "@/components/landing/FindYourCircle";
+import GreenSection from "@/components/landing/GreenSection";
+import Hero from "@/components/landing/Hero";
+import OrangeSection from "@/components/landing/OrangeSection";
+import TeamSection from "@/components/landing/TeamSection";
 
 function Home() {
   return (

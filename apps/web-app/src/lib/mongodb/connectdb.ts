@@ -1,5 +1,4 @@
 import mongoose from "mongoose";
-import { cn } from "../utils";
 
 let isConnected = false;
 
