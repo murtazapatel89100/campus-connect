@@ -3,22 +3,22 @@
 import { CldUploadWidget } from "next-cloudinary";
 import { getBrowserAndOS } from "@/lib/cloudinary/getBrowserOS";
 import { useUser } from "@clerk/nextjs";
-import { useState, useEffect } from "react";
+import { useState } from "react";
+import {
+  AlertDialogHeader,
+  AlertDialogFooter,
+} from "@/components/ui/alert-dialogue/alert-dialog";
+import {
+  AlertDialog,
+  AlertDialogContent,
+  AlertDialogTitle,
+  AlertDialogDescription,
+  AlertDialogCancel,
+} from "@radix-ui/react-alert-dialog";
 
 const Page = () => {
   const { user, isLoaded } = useUser();
-  const [name, setName] = useState("");
-
-  useEffect(() => {
-    console.log("Effect running:");
-    console.log("isLoaded:", isLoaded);
-    console.log("user:", user);
-
-    if (isLoaded && user) {
-      const username = user.fullName || "";
-      setName(username);
-    }
-  }, [isLoaded, user]);
+  const [success, setSuccess] = useState(false);
 
   const handleAuditLog = async (result: any) => {
     const publicId = result?.info?.public_id;
@@ -47,7 +47,6 @@ const Page = () => {
     }
   };
 
-  // Show loading state while user data is loading
   if (!isLoaded) {
     return (
       <div className="flex flex-col items-center font-itim justify-center min-h-screen gap-4">
@@ -58,6 +57,28 @@ const Page = () => {
 
   return (
     <div className="flex flex-col items-center font-itim justify-center min-h-screen gap-4">
+      <AlertDialog open={success} onOpenChange={setSuccess}>
+        <AlertDialogContent className="bg-[#555555]/30 backdrop-blur-lg border absolute z-20 border-white/30 shadow-lg text-black rounded-2xl p-10 max-w-sm md:max-w-lg w-full">
+          <AlertDialogHeader className="items-center font-albert-sans text-center">
+            <AlertDialogTitle className="text-xl font-bold">
+              Cloudinary
+            </AlertDialogTitle>
+            <AlertDialogDescription className="font-medium text-center mt-2">
+              Upload Succesful
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+
+          <AlertDialogFooter className="mt-6 font-albert-sans flex justify-center gap-4">
+            <AlertDialogCancel
+              className="bg-white/20 backdrop-blur-lg border py-1 border-white/30 px-3 cursor-pointer hover:border-white hover:bg-black hover:text-white transition-colors transition-border duration-300 ease-in-out rounded-md"
+              onClick={() => setSuccess(false)}
+            >
+              Okay
+            </AlertDialogCancel>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
+
       <CldUploadWidget
         signatureEndpoint="/api/image-upload"
         uploadPreset="signed_preset"
@@ -70,7 +91,7 @@ const Page = () => {
         }}
         onSuccess={(result) => {
           console.log("Upload successful!", result);
-          alert("Upload successful!");
+          setSuccess(true);
           handleAuditLog(result);
         }}
       >

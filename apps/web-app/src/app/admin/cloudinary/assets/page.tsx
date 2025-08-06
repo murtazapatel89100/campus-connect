@@ -2,11 +2,17 @@
 
 import { useEffect, useState } from "react";
 import { getBrowserAndOS } from "@/lib/cloudinary/getBrowserOS";
+import { FaTrash } from "react-icons/fa";
+import { useUser } from "@clerk/nextjs";
 
 export default function ViewAssets() {
   const [assets, setAssets] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+
+  const { user, isLoaded } = useUser();
+
+  const username = user?.fullName || "";
 
   useEffect(() => {
     const fetchAssets = async () => {
@@ -54,7 +60,7 @@ export default function ViewAssets() {
         alert("Asset deleted successfully");
 
         const payload = {
-          username: "dummy_user",
+          username: username,
           entityId: publicId,
           environment: process.env.NODE_ENV || "development",
           browser: getBrowserAndOS(navigator.userAgent),
@@ -104,6 +110,14 @@ export default function ViewAssets() {
       <div className="bg-white/20 rounded-full mt-2 px-4 py-1 h-8 w-24"></div>
     </div>
   );
+
+  if (!isLoaded) {
+    return (
+      <div className="flex flex-col items-center font-itim justify-center min-h-screen gap-4">
+        <div className="text-white">Loading...</div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen px-8 pt-[100px]">
@@ -176,10 +190,10 @@ export default function ViewAssets() {
                     onClick={() =>
                       handleDelete(asset.public_id, asset.resource_type)
                     }
-                    className="absolute top-2 right-2 bg-red-600 text-white rounded-full w-8 h-8 flex items-center justify-center text-sm shadow-md hover:bg-red-700 transition-colors duration-200"
+                    className="absolute top-2 right-2 bg-[#555555]/40 rounded-full w-8 h-8 flex items-center justify-center text-sm shadow-md hover:bg-red-700 transition-colors duration-200"
                     title="Delete asset"
                   >
-                    🗑️
+                    <FaTrash />
                   </button>
                 </div>
 
