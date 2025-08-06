@@ -11,7 +11,7 @@ import {
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
-import { buttonVariants } from "../ui/Buttons";
+import { buttonVariants } from "@/components/ui/Buttons";
 export interface ScrollExpandMediaProps {
   mediaSrc: string;
   bgImageSrc: string;
@@ -284,10 +284,8 @@ const MediaContent = () => (
       dolores voluptatem id, dolore, rem numquam autem magnam ipsam placeat
       accusamus?
     </p>
-    <div className="flex gap-5">
-      <button className={cn(buttonVariants())}>About Us</button>
-      <button className={cn(buttonVariants())}>DOCS</button>
-    </div>
+    <button className={cn(buttonVariants())}>About Us</button>
+    <button className={cn(buttonVariants())}>About Us</button>
   </div>
 );
 
