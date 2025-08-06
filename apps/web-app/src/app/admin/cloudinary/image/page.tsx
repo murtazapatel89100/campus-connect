@@ -16,7 +16,6 @@ const Page = () => {
 
     if (isLoaded && user) {
       const username = user.fullName || "";
-      console.log("Setting name:", username);
       setName(username);
     }
   }, [isLoaded, user]);
@@ -35,8 +34,6 @@ const Page = () => {
       timestamp: new Date().toISOString(),
       action: "upload",
     };
-
-    console.log("Sending audit log:", data);
 
     try {
       await fetch("/api/audit-log", {
