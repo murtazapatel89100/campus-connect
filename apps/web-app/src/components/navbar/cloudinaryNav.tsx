@@ -6,7 +6,12 @@ import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { cn } from "../../lib/utils";
 
-import { FaImage, FaPhotoVideo, FaFileVideo } from "react-icons/fa";
+import {
+  FaImage,
+  FaPhotoVideo,
+  FaFileVideo,
+  FaClipboard,
+} from "react-icons/fa";
 
 const CloudinaryNav = () => {
   const pathname = usePathname();
@@ -26,6 +31,11 @@ const CloudinaryNav = () => {
       name: "View Assets",
       path: "/admin/cloudinary/assets",
       icon: <FaPhotoVideo size={18} />,
+    },
+    {
+      name: "Audit Logs",
+      path: "/admin/cloudinary/auditlog",
+      icon: <FaClipboard size={18} />,
     },
   ];
 
