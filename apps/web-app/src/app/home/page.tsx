@@ -4,6 +4,7 @@ import GreenSection from "@/components/landing/GreenSection";
 import Hero from "@/components/landing/Hero";
 import OrangeSection from "@/components/landing/OrangeSection";
 import TeamSection from "@/components/landing/TeamSection";
+import Feature from "@/components/landing/feature";
 
 function Home() {
   return (
@@ -20,6 +21,8 @@ function Home() {
       <GreenSection />
       <FindYourCircle />
       <OrangeSection />
+      <Feature />
+      
       <TeamSection />
       <FaqSection />
     </div>
