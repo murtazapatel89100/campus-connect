@@ -22,7 +22,6 @@ function Home() {
       <FindYourCircle />
       <OrangeSection />
       <Feature />
-      
       <TeamSection />
       <FaqSection />
     </div>

@@ -33,7 +33,7 @@ export default function TeamSection() {
   return (
     <>
       {/* Top Wave */}
-      <div className="w-full overflow-hidden pointer-events-none select-none">
+      <div className="w-full overflow-hidden bg-[#F4ECE8] pointer-events-none select-none ">
         <img
           src="/waves/wave_coffee.svg"
           alt="greenWave"

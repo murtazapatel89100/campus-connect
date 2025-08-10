@@ -34,7 +34,7 @@ export default function FaqSection() {
   ];
 
   return (
-    <section className="py-26 px-4 sm:px-8 lg:px-16 h-[600px]">
+    <section className="py-26 px-4 sm:px-8 lg:px-16 h-[600px] bg-[#F4ECE8]">
       <div className="max-w-4xl mx-auto space-y-4">
         {faqs.map((faq, index) => (
           <Disclosure
