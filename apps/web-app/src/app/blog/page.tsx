@@ -3,6 +3,8 @@ import { useState } from "react";
 import Image from "next/image";
 import MobileShowcase from "@/components/ui/mobile";
 import Link from "next/link";
+import { Search } from "lucide-react";
+import { cn } from "@/lib/utils";
 export default function BlogPage() {
   const [search, setSearch] = useState("");
   const [currentArticle, setCurrentArticle] = useState(0);
@@ -15,7 +17,6 @@ export default function BlogPage() {
       author: "Andrea Wise",
       date: "July 28, 2025",
       link: "/blog/resilience",
-      span: "col-span-1",
     },
     {
       title: "Title of the Blog Post",
@@ -24,7 +25,6 @@ export default function BlogPage() {
       author: "Karen Smith",
       date: "July 20, 2025",
       link: "/blog/growth",
-      span: "col-span-1",
     },
     {
       title: "Title of the Blog Post",
@@ -51,7 +51,6 @@ export default function BlogPage() {
       author: "Angela Smith",
       date: "July 24, 2025",
       link: "/blog/goal",
-      span: "col-span-1",
     },
     {
       title: "Title of the Blog Post",
@@ -60,7 +59,6 @@ export default function BlogPage() {
       author: "Jason Park",
       date: "July 16, 2025",
       link: "/blog/self-belief",
-      span: "col-span-1",
     },
     {
       title: "Title of the Blog Post",
@@ -127,39 +125,15 @@ export default function BlogPage() {
         {/* Header */}
         <header className="max-w-screen-2xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
           <h1 className="text-3xl font-bold">CampusConnect</h1>
-          <nav className="hidden md:flex gap-6 text-lg">
-            <a href="#">Category</a>
-            <a href="#">Events</a>
-            <a href="#">Clubs</a>
-            <a href="#">News</a>
-          </nav>
-          <form
-            onSubmit={handleSearch}
-            className="flex items-center gap-2 border border-[#313582] rounded-md px-3 py-2 w-full max-w-[300px] bg-white"
-          >
+
+          <div className="relative text-black mr-32 hidden w-full max-w-md md:flex">
+            <Search className="absolute top-1/2 left-2 h-5 w-5 text-black -translate-y-1/2" />
             <input
               type="text"
               placeholder="Search..."
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
-              className="flex-1 bg-transparent outline-none text-sm text-black placeholder:text-gray-500"
+              className="w-full border-1 rounded-full bg-white py-2 pr-2 pl-10 focus:border-2 border-black focus:ring-0 focus:outline-none"
             />
-            <button type="submit">
-              <svg
-                className="w-4 h-4 text-black"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth={2}
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M21 21l-4.35-4.35M9.5 17A7.5 7.5 0 109.5 2a7.5 7.5 0 000 15z"
-                />
-              </svg>
-            </button>
-          </form>
+          </div>
         </header>
 
         {/* Hero Content */}
@@ -167,11 +141,15 @@ export default function BlogPage() {
           {/* Left Text */}
           <div className="text-center lg:text-left">
             <h2 className="text-[2.5rem] lg:text-[3.5rem] font-serif font-bold leading-tight">
-              Stay Updated with What’s Happening on campus!
+              Stay Updated with What's Happening on campus!
             </h2>
-            <button className="mt-6 bg-[#668890] text-white px-8 py-3 rounded-xl text-xl">
-              Learn More
-            </button>
+            <p className="mt-4 text-lg text-gray-800 max-w-xl">
+              From groundbreaking research and thrilling sports events to
+              cultural festivals and student-led initiatives — CampusConnect
+              brings all the latest stories straight to you. Whether you want to
+              join a club, attend a workshop, or simply stay in the loop, we've
+              got your campus covered.
+            </p>
           </div>
 
           {/* Right Image */}
@@ -184,14 +162,9 @@ export default function BlogPage() {
         </div>
       </section>
 
-      <div className="w-full min-h-screen bg-[#668890] p-6">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-screen-2xl mx-auto auto-rows-fr min-h-screen">
+      <section className="w-full min-h-screen bg-[#668890] p-6">
+        <div className="grid md:grid-cols-1 grid-cols-2 lg:grid-cols-4 gap-6 max-w-screen-2xl mx-auto auto-rows-fr min-h-screen">
           {blogPosts.map((post, index) => {
-            // Conditional height based on row-span
-            const imageHeight = post.span.includes("row-span-2")
-              ? "h-72 sm:h-96 md:h-[28rem]"
-              : "h-48 sm:h-56 md:h-64";
-
             return (
               <Link
                 href={post.link}
@@ -199,7 +172,14 @@ export default function BlogPage() {
                 className={`group relative rounded-xl overflow-hidden bg-white shadow-lg transition-all hover:scale-105 hover:shadow-2xl transform ${post.span} flex flex-col`}
               >
                 {/* Thumbnail */}
-                <div className={`relative w-full ${imageHeight}`}>
+                <div
+                  className={cn(
+                    "relative w-full",
+                    post.span?.includes("row-span-2")
+                      ? "h-72 sm:h-96 md:h-[28rem]"
+                      : "h-48 sm:h-56 md:h-64"
+                  )}
+                >
                   <Image
                     src={post.image}
                     alt={post.title}
@@ -225,7 +205,7 @@ export default function BlogPage() {
             );
           })}
         </div>
-      </div>
+      </section>
     </main>
   );
 }
