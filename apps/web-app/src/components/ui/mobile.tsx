@@ -2,11 +2,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import {
-  Newspaper,
-  Globe,
-  Clock,
-} from "lucide-react";
+import { Newspaper, Globe, Clock } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 
 interface NewsArticle {

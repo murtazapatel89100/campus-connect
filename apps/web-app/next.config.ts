@@ -3,18 +3,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    remotePatterns: [
-      {
-        protocol: "https",
-        hostname: "images.unsplash.com",
-        // pathname: "/**" 
-      },
-      {
-        protocol: "https",
-        hostname: "cdn.somewebsite.com",
-        // pathname: "/**"
-      },
-    ],
+    domains: ["images.unsplash.com", "res.cloudinary.com", "cdn.hashnode.com"],
   },
   eslint: {
     ignoreDuringBuilds: true,
@@ -28,6 +17,14 @@ const nextConfig = {
         permanent: true,
       },
     ];
+  },
+  webpack(config: any) {
+    config.module.rules.push({
+      test: /\.(graphql|gql)$/,
+      exclude: /node_modules/,
+      loader: "graphql-tag/loader",
+    });
+    return config;
   },
 };
 
