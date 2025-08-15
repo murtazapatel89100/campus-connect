@@ -1,0 +1,18 @@
+query GetPosts($id: ObjectId = "689e85517fe4bb882b07acfb") {
+  publication(id: $id) {
+    posts(first: 5) {
+      edges {
+        node {
+          title
+          brief
+          slug
+          url
+          coverImage {
+            url
+          }
+          publishedAt
+        }
+      }
+    }
+  }
+}
