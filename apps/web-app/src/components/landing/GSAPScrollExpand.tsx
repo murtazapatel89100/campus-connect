@@ -19,7 +19,7 @@ interface HeroProps {
 
 const Hero: React.FC<HeroProps> = ({
   mediaSrc = "/videos/landing1.mp4",
-  bgImageSrc = "/images/library.png",
+  bgImageSrc = "/images/herobg.png",
   title = "Campus Connect",
   textBlend = false,
   children,
@@ -32,6 +32,7 @@ const Hero: React.FC<HeroProps> = ({
   const [isMobile, setIsMobile] = useState(false);
   const [expanded, setExpanded] = useState(false);
   const bgOverlayRef = useRef<HTMLDivElement>(null);
+  const [videoError, setVideoError] = useState(false);
 
   // Responsive logic
   useEffect(() => {
@@ -164,17 +165,30 @@ const Hero: React.FC<HeroProps> = ({
       className="relative flex flex-col items-center justify-start min-h-[100dvh]"
       style={{ backgroundColor: expanded ? "#F4ECE8" : "transparent" }}
     >
-      {/* Background Image + Overlay */}
+      {/* Background Video + Overlay */}
       <div className="absolute inset-0 z-0 h-full">
-        <Image
-          src={bgImageSrc}
-          alt="Background"
-          width={1920}
-          height={1080}
-          className="w-screen h-screen"
-          style={{ objectFit: "cover", objectPosition: "center" }}
-          priority
-        />
+        {!videoError ? (
+          <video
+            className="w-screen h-screen object-cover"
+            autoPlay
+            loop
+            muted
+            playsInline
+            preload="auto"
+            onError={() => setVideoError(true)}
+          >
+            <source src={bgImageSrc} type="video/mp4" />
+          </video>
+        ) : (
+          <Image
+            src="/images/herobg.png"
+            alt="Background"
+            width={1920}
+            height={1080}
+            className="w-screen h-screen object-cover"
+            priority
+          />
+        )}
         <div className="absolute inset-0 bg-black/10" />
         {/* Background color overlay that fades in */}
         <div 
@@ -210,6 +224,7 @@ const Hero: React.FC<HeroProps> = ({
               controls={false}
               style={{ background: "transparent" }}
             />
+            <div className="absolute inset-0 pointer-events-none bg-black/35 rounded-xl" />
           </div>
 
           {/* Title */}
