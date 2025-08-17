@@ -18,7 +18,7 @@ interface HeroProps {
 }
 
 const Hero: React.FC<HeroProps> = ({
-  mediaSrc = "/images/hero.png",
+  mediaSrc = "/images/landing2.mp4",
   bgImageSrc = "/images/library.png",
   title = "Campus Connect",
   textBlend = false,
@@ -116,17 +116,27 @@ const Hero: React.FC<HeroProps> = ({
           <div
             ref={mediaRef}
             className="absolute z-0 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 rounded-2xl shadow-[0_0_50px_rgba(0,0,0,0.3)] overflow-hidden"
-            style={{ width: 300, height: 400, maxWidth: "95vw", maxHeight: "85vh" }}
+            style={{
+              width: 300,
+              height: 400,
+              maxWidth: "95vw",
+              maxHeight: "85vh",
+            }}
           >
-            <Image
-              src={mediaSrc}
-              alt={title || "Media content"}
+            <video
+              src="/videos/landing1.mp4"
+              className="w-full h-full object-cover rounded-xl"
               width={1280}
               height={720}
-              className="w-full h-full object-cover rounded-xl"
-              priority
+              autoPlay
+              muted
+              loop
+              playsInline
+              controls={false}
+              style={{ background: "transparent" }}
             />
-            <div className="absolute inset-0 bg-black/50 rounded-xl" />
+
+            <div className="absolute inset-0 pointer-events-none bg-black/50 rounded-xl" />
           </div>
 
           {/* Title, Date, Scroll to Expand */}
@@ -135,9 +145,10 @@ const Hero: React.FC<HeroProps> = ({
               textBlend ? "mix-blend-difference" : "mix-blend-normal"
             }`}
           >
-            
             {title && (
-              <h1 className="text-6xl font-bold font-gothic-expanded">{title}</h1>
+              <h1 className="text-6xl font-bold font-gothic-expanded">
+                {title}
+              </h1>
             )}
           </div>
         </div>
@@ -150,16 +161,16 @@ const Hero: React.FC<HeroProps> = ({
                 About Campus Connect
               </h2>
               <p className="text-2xl mb-8 font-family-goudy">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia
-                perspiciatis quis soluta nam harum dolore ab. Quo consectetur rem non
-                saepe laudantium recusandae? Provident laborum ea cupiditate
-                exercitationem dicta aspernatur?
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Mollitia perspiciatis quis soluta nam harum dolore ab. Quo
+                consectetur rem non saepe laudantium recusandae? Provident
+                laborum ea cupiditate exercitationem dicta aspernatur?
               </p>
               <p className="text-2xl mb-8 font-family-goudy">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe qui
-                veniam, praesentium perspiciatis eligendi sequi commodi sapiente
-                repellat quia dolores voluptatem id, dolore, rem numquam autem magnam
-                ipsam placeat accusamus?
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe
+                qui veniam, praesentium perspiciatis eligendi sequi commodi
+                sapiente repellat quia dolores voluptatem id, dolore, rem
+                numquam autem magnam ipsam placeat accusamus?
               </p>
             </div>
           )}
