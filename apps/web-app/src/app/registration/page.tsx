@@ -19,10 +19,7 @@ import {
   AlertDialogCancel,
   AlertDialogAction,
 } from "@radix-ui/react-alert-dialog";
-import { cn } from "@/lib/utils";
-import { buttonVariants } from "@/components/ui/Buttons";
 
-// Separate component that uses useSearchParams
 function AuthPageContent() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -32,6 +29,7 @@ function AuthPageContent() {
   const [oneTimePassword, setOneTimePassword] = useState("");
   const [isVerificationStep, setIsVerificationStep] = useState(false);
   const [breachalert, setBreachAlert] = useState(false);
+  const [newAcc, setNewAcc] = useState(false);
 
   const { isLoaded, signUp, setActive } = useSignUp();
   const router = useRouter();
@@ -41,7 +39,8 @@ function AuthPageContent() {
     if (searchParams) {
       const otpParam = searchParams.get("otp");
       const emailParam = searchParams.get("email");
-      const breachparam = searchParams.get("breach");
+      const breachParam = searchParams.get("breach");
+      const newAcc = searchParams.get("exists");
 
       if (otpParam === "true") {
         setIsVerificationStep(true);
@@ -53,8 +52,12 @@ function AuthPageContent() {
         setEmail(emailParam);
       }
 
-      if (breachparam === "true") {
+      if (breachParam === "true") {
         setBreachAlert(true);
+      }
+
+      if (newAcc) {
+        setNewAcc(true);
       }
     }
   }, [searchParams]);
@@ -135,7 +138,7 @@ function AuthPageContent() {
     if (isLoaded && signUp) {
       signUp.authenticateWithRedirect({
         strategy: "oauth_google",
-        redirectUrl: "/sso-callback",
+        redirectUrl: "/registration/signin?exists=true",
         redirectUrlComplete: "/registration/details",
       });
     }
@@ -169,11 +172,42 @@ function AuthPageContent() {
                 className="bg-white/20 backdrop-blur-lg border border-white/30 px-3 cursor-pointer hover:border-white hover:bg-black hover:text-white transition-colors transition-border duration-300 ease-in-out rounded-md"
                 onClick={() => {
                   setBreachAlert(false);
-                  console.log("done");
+                  router.push("/registration/signin");
                 }}
               >
                 Sign In
               </AlertDialogAction>
+            </AlertDialogFooter>
+          </AlertDialogContent>
+        </AlertDialog>
+
+        <AlertDialog open={newAcc} onOpenChange={setNewAcc}>
+          <AlertDialogContent className="bg-[#9EBCB8]/60 backdrop-blur-lg border absolute z-20 border-white/30 shadow-lg text-black rounded-2xl p-10 max-w-sm md:max-w-lg w-full">
+            <AlertDialogHeader className="items-center font-albert-sans text-center">
+              <AlertDialogTitle className="text-xl font-bold">
+                Important Alert
+              </AlertDialogTitle>
+              <AlertDialogDescription className="font-medium text-center mt-2">
+                It seems Like you do not please create one to continue
+              </AlertDialogDescription>
+            </AlertDialogHeader>
+
+            <AlertDialogFooter className="mt-6 font-albert-sans flex justify-center gap-4">
+              <AlertDialogCancel
+                className="bg-white/20 backdrop-blur-lg border py-1 border-white/30 px-3 cursor-pointer hover:border-white hover:bg-black hover:text-white transition-colors transition-border duration-300 ease-in-out rounded-md"
+                onClick={() => setNewAcc(false)}
+              >
+                Okay
+              </AlertDialogCancel>
+              {/* <AlertDialogAction
+                className="bg-white/20 backdrop-blur-lg border border-white/30 px-3 cursor-pointer hover:border-white hover:bg-black hover:text-white transition-colors transition-border duration-300 ease-in-out rounded-md"
+                onClick={() => {
+                  setBreachAlert(false);
+                  router.push("/registration/signin");
+                }}
+              >
+                Sign In
+              </AlertDialogAction> */}
             </AlertDialogFooter>
           </AlertDialogContent>
         </AlertDialog>
@@ -336,7 +370,7 @@ function AuthPageContent() {
                 <button
                   type="button"
                   className="text-[#088D8D] cursor-pointer hover:shadow hover:underline hover:scale-105 transition-transform font-extrabold"
-                  onClick={() => router.push("/sign-in")}
+                  onClick={() => router.push("/registration/signin")}
                 >
                   Sign In
                 </button>
