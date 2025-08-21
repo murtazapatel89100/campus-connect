@@ -36,8 +36,8 @@ const page = () => {
       branch,
       currentYear: year,
       rollNo,
-      mobileNo: mobNumber,
-      mobileNo2: alternateMobNumber || undefined,
+      mobileNo: `+91 ${mobNumber}`,
+      mobileNo2: `+91 ${alternateMobNumber}` || undefined,
     };
 
     try {
