@@ -80,7 +80,7 @@ const ForgotPasswordPage: NextPage = () => {
                 return;
               }
 
-              router.push("/");
+              router.push("/home");
             },
           });
           setError("");
