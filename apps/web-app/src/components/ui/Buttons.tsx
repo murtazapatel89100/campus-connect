@@ -12,6 +12,8 @@ const buttonVariants = cva(
         primary:
           "border-[#369392] text-white hover:text-black hover:bg-[#369392]",
         tertiary: "border-white text-white hover:bg-white hover:text-black",
+        login:
+          "w-full bg-[#1E1E1E] border-none cursor-pointer hover:scale-105 transition-transform text-white font-semibold py-3 rounded-md",
         destructive:
           "bg-destructive text-white shadow-xs hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40 dark:bg-destructive/60",
         outline:
