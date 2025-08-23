@@ -19,6 +19,8 @@ import { useSignIn } from "@clerk/nextjs";
 import { IoIosEye, IoIosEyeOff } from "react-icons/io";
 import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
+import { cn } from "@/lib/utils";
+import { buttonVariants } from "@/components/ui/Buttons";
 
 const Signin = () => {
   // const [breachalert, setBreachAlert] = useState(false);
@@ -248,7 +250,7 @@ const Signin = () => {
 
           <button
             type="submit"
-            className="w-full bg-[#1E1E1E] cursor-pointer hover:scale-105 transition-transform text-white font-semibold py-3 rounded-md"
+            className={cn(buttonVariants({ variant: "login", size: "lg" }))}
             disabled={!isLoaded}
           >
             Sign In

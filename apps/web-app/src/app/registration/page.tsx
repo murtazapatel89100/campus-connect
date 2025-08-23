@@ -19,6 +19,8 @@ import {
   AlertDialogCancel,
   AlertDialogAction,
 } from "@radix-ui/react-alert-dialog";
+import { cn } from "@/lib/utils";
+import { buttonVariants } from "@/components/ui/Buttons";
 
 function AuthPageContent() {
   const [email, setEmail] = useState("");
@@ -342,7 +344,7 @@ function AuthPageContent() {
             <>
               <button
                 type="submit"
-                className="w-full bg-[#1E1E1E] cursor-pointer hover:scale-105 transition-transform text-white font-semibold py-3 rounded-md"
+                className={cn(buttonVariants({ variant: "login", size: "lg" }))}
                 disabled={!isLoaded}
               >
                 Sign Up

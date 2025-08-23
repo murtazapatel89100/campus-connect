@@ -84,12 +84,9 @@ const ForgotPasswordPage: NextPage = () => {
             },
           });
           setError("");
-        } else {
-          console.log(result);
         }
       })
       .catch((err) => {
-        console.error("error", err.errors[0].longMessage);
         setError(err.errors[0].longMessage);
       });
   }
