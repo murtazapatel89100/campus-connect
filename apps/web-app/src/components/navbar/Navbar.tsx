@@ -1,5 +1,6 @@
 "use client";
 
+import { SignedIn, UserButton } from "@clerk/nextjs";
 import { cn } from "../../lib/utils";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -41,6 +42,9 @@ export default function Navbar({ className }: NavbarProps) {
         <p className={navItemClass}>HOME</p>
         <p className={navItemClass}>ABOUT</p>
         <p className={navItemClass}>CONTACT US</p>
+        <SignedIn>
+          <UserButton />
+        </SignedIn>
       </nav>
     </div>
   );
