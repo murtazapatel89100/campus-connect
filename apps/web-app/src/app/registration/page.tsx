@@ -146,7 +146,13 @@ function AuthPageContent() {
 
   return (
     <div className="relative min-h-screen bg-[#1A2328] flex items-center justify-center px-4">
-      <div className="h-fit w-[90vw] bg-[url('/images/hero.png')] bg-cover bg-center flex flex-col md:flex-row items-center justify-center">
+      <div className="relative w-[90vw] h-screen max-h-[900px] min-h-[600px] flex flex-col md:flex-row items-center justify-center">
+        {/* Background Image */}
+        <img
+          src="/images/hero.png"
+          alt="Hero background"
+          className="absolute inset-0 w-full h-full object-cover rounded-lg"
+        />
         <div className="hidden md:block w-1/2"></div>
 
         <AlertDialog open={breachalert} onOpenChange={setBreachAlert}>
@@ -367,13 +373,12 @@ function AuthPageContent() {
                 <span className="text-black font-semibold">
                   Already have an account?
                 </span>
-                <button
-                  type="button"
+                <Link
+                  href={"/registration/signin"}
                   className="text-[#088D8D] cursor-pointer hover:shadow hover:underline hover:scale-105 transition-transform font-extrabold"
-                  onClick={() => router.push("/registration/signin")}
                 >
                   Sign In
-                </button>
+                </Link>
               </div>
             </>
           )}

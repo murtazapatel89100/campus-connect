@@ -18,14 +18,15 @@ import { MdErrorOutline } from "react-icons/md";
 import { useSignIn } from "@clerk/nextjs";
 import { IoIosEye, IoIosEyeOff } from "react-icons/io";
 import { useRouter, useSearchParams } from "next/navigation";
+import Link from "next/link";
 
 const Signin = () => {
-  const [breachalert, setBreachAlert] = useState(false);
+  // const [breachalert, setBreachAlert] = useState(false);
   const [error, setError] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [oneTimePassword, setOneTimePassword] = useState("");
+  // const [oneTimePassword, setOneTimePassword] = useState("");
   const [newAcc, setNewAcc] = useState(false);
 
   const { isLoaded, signIn, setActive } = useSignIn();
@@ -100,7 +101,13 @@ const Signin = () => {
 
   return (
     <div className="relative min-h-screen bg-[#1A2328] flex items-center justify-center px-4">
-      <div className="h-fit w-[90vw] bg-[url('/images/hero.png')] bg-cover bg-center flex flex-col md:flex-row items-center justify-center">
+      <div className="relative w-[90vw] h-screen max-h-[900px] min-h-[600px] flex flex-col md:flex-row items-center justify-center">
+        {/* Background Image */}
+        <img
+          src="/images/hero.png"
+          alt="Hero background"
+          className="absolute inset-0 w-full h-full object-cover rounded-lg"
+        />
         <div className="hidden md:block w-1/2"></div>
         <AlertDialog open={newAcc} onOpenChange={setNewAcc}>
           <AlertDialogContent className="bg-[#9EBCB8]/60 backdrop-blur-lg border absolute z-20 border-white/30 shadow-lg text-black rounded-2xl p-10 max-w-sm md:max-w-lg w-full">
@@ -202,7 +209,16 @@ const Signin = () => {
             </div>
           </div>
 
-          <div id="clerk-captcha"></div>
+          <div className="w-full flex justify-end items-center text-xs text-[#000000]">
+            <label className="flex items-center gap-2 text-sm text-[#000000]">
+              <Link
+                href="/forgot-password"
+                className="text-blue-600 underline hover:text-blue-800 hover:font-semibold"
+              >
+                Forgot Password?
+              </Link>
+            </label>
+          </div>
 
           {/* {isVerificationStep && (
             <div className="w-full my-24">
@@ -263,13 +279,12 @@ const Signin = () => {
             <span className="text-black font-semibold">
               Don't have an account?
             </span>
-            <button
-              type="button"
+            <Link
+              href={"/registration"}
               className="text-[#088D8D] cursor-pointer hover:shadow hover:underline hover:scale-105 transition-transform font-extrabold"
-              onClick={() => router.push("/registration")}
             >
               Sign Up
-            </button>
+            </Link>
           </div>
         </form>
       </div>
