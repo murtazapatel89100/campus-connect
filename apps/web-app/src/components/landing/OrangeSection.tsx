@@ -2,8 +2,9 @@
 
 import React, { useRef, useState, useEffect } from "react";
 import { useScroll, useTransform, motion, MotionValue } from "framer-motion";
+import { AdvancedImage, lazyload, placeholder } from "@cloudinary/react";
+import { Cloudinary } from "@cloudinary/url-gen";
 
-// ⬇️ Card component with responsive height and image fix
 const Card = ({
   rotate,
   scale,
@@ -39,6 +40,13 @@ const Card = ({
     </motion.div>
   );
 };
+const cld = new Cloudinary({
+  cloud: {
+    cloudName: "dt6a4jcbv",
+  },
+});
+
+const myImage = cld.image("Dashboard_hmfrkc");
 
 const Header = ({
   translate,
@@ -129,8 +137,8 @@ export default function OrangeSection() {
           }
         >
           <div className="w-full h-full flex items-center justify-center pointer-events-none select-none">
-            <img
-              src="/images/Dashboard.png"
+            <AdvancedImage
+              cldImg={myImage as any}
               alt="tablet image"
               className="w-full h-full object-cover"
               draggable="false"

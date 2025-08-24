@@ -11,6 +11,8 @@
   "dependencies": {
     "@clerk/backend": "^2.9.3",
     "@clerk/nextjs": "^6.28.0",
+    "@cloudinary/react": "^1.14.3",
+    "@cloudinary/url-gen": "^1.19.0",
     "@headlessui/react": "^2.2.4",
     "@heroicons/react": "^2.2.0",
     "@radix-ui/react-alert-dialog": "^1.1.14",
