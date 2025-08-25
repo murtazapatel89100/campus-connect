@@ -52,9 +52,7 @@ const MobileShowcase: React.FC<MobileShowcaseProps> = ({
               <div className="px-6 pb-4">
                 <div className="flex items-center gap-2 mb-4">
                   <Newspaper className="w-6 h-6 text-slate-700" />
-                  <h2 className="text-lg font-bold text-slate-900">
-                    Campus Herald
-                  </h2>
+                  <h2 className="text-lg font-bold text-slate-900">Campus Herald</h2>
                 </div>
                 <div className="flex items-center gap-4 text-xs text-slate-600 mb-2">
                   <div className="flex items-center gap-1">

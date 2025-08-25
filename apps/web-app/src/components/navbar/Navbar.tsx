@@ -4,6 +4,7 @@ import { SignedIn, UserButton } from "@clerk/nextjs";
 import { cn } from "../../lib/utils";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
+import { theme } from "@cloudinary/url-gen/actions/effect";
 
 type NavbarProps = {
   className?: string;
@@ -11,37 +12,35 @@ type NavbarProps = {
 
 export default function Navbar({ className }: NavbarProps) {
   const pathname = usePathname();
-
   const [hide, setHide] = useState(false);
 
   useEffect(() => {
-    if (pathname.startsWith("/admin")) {
-      setHide(true);
-    } else {
-      setHide(false);
-    }
+    setHide(pathname.startsWith("/admin"));
   }, [pathname]);
 
-  const navItemClass = cn(
-    "transition-transform hover:scale-125 hover:underline hover:text-teal-500 cursor-pointer whitespace-nowrap"
-  );
+  const navItemClass =
+    "transition-transform hover:scale-110 hover:underline hover:text-teal-400 cursor-pointer whitespace-nowrap";
 
   return (
     <div
       className={cn(
-        "fixed top-3 left-1/2 -translate-x-1/2 z-50",
+        "fixed top-0 left-0 w-full z-50 py-3 px-5",
         hide && "hidden"
       )}
     >
       <nav
         className={cn(
-          "bg-gray-300 border border-black flex items-center justify-center gap-10 p-4 w-fit rounded-full font-semibold text-black",
+          "bg-white/20 backdrop-blur-3xl border border-black shadow-lg flex items-center justify-between px-8 py-4 font-semibold text-black rounded-2xl",
           className
         )}
       >
-        <p className={navItemClass}>HOME</p>
-        <p className={navItemClass}>ABOUT</p>
-        <p className={navItemClass}>CONTACT US</p>
+        {/* Left Side */}
+        <div className="flex gap-6">
+          <p className={navItemClass}>HOME</p>
+          <p className={navItemClass}>ABOUT</p>
+          <p className={navItemClass}>CONTACT US</p>
+        </div>
+
         <SignedIn>
           <UserButton />
         </SignedIn>

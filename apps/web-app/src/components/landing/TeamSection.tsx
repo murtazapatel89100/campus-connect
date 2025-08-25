@@ -31,46 +31,69 @@ const teamMembers = [
 
 export default function TeamSection() {
   return (
-    <section className="bg-[#F4ECE8] py-16 px-4 sm:px-8 lg:px-16">
-      <div className="max-w-7xl mx-auto text-center mb-12">
-        <h2 className="text-4xl font-gothic-expanded md:text-6xl font-bold mb-4">
-          Meet Our Team
-        </h2>
-        <p className="text-xl text-black font-family-goudy">
-          Passionate people powering Campus Connect
-        </p>
+    <>
+      {/* Top Wave */}
+      <div className="w-full overflow-hidden bg-[#F4ECE8] pointer-events-none select-none ">
+        <img
+          src="/waves/wave_coffee.svg"
+          alt="greenWave"
+          className="w-full h-auto"
+          draggable="false"
+        />
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 justify-items-center">
-        {teamMembers.map((member, index) => (
-          <div
-            key={index}
-            className="
-              bg-black text-white 
-              w-[90%] max-w-[256px] h-[338px] 
-              rounded-xl overflow-hidden shadow-2xl 
-              font-gothic-expanded
-              transform transition-transform hover:scale-105 hover:shadow-shell-900
-            "
-          >
-            {/* Image */}
-            <div className="relative w-full h-[200px]">
-              <Image
-                src={member.image}
-                alt={member.name}
-                layout="fill"
-                className="opacity-80 object-cover"
-              />
-            </div>
+      {/* Brown Section */}
+      <section className="bg-[#7a4a31] py-16 px-4 sm:px-8 lg:px-16">
+        <div className="max-w-7xl mx-auto text-center mb-12">
+          <h2 className="text-4xl font-gothic-expanded md:text-6xl font-bold mb-4">
+            Meet Our Team
+          </h2>
+          <p className="text-xl text-black font-family-goudy">
+            Passionate people powering Campus Connect
+          </p>
+        </div>
 
-            {/* Text */}
-            <div className="p-4 text-center">
-              <h3 className="text-xl font-bold">{member.name}</h3>
-              <p className="text-sm text-gray-300">{member.role}</p>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 justify-items-center">
+          {teamMembers.map((member, index) => (
+            <div
+              key={index}
+              className="
+                bg-black text-white 
+                w-[90%] max-w-[256px] h-[338px] 
+                rounded-xl overflow-hidden shadow-2xl 
+                font-gothic-expanded
+                transform transition-transform hover:scale-105 hover:shadow-shell-900
+              "
+            >
+              {/* Image */}
+              <div className="relative w-full h-[200px]">
+                <Image
+                  src={member.image}
+                  alt={member.name}
+                  layout="fill"
+                  className="opacity-80 object-cover"
+                />
+              </div>
+
+              {/* Text */}
+              <div className="p-4 text-center">
+                <h3 className="text-xl font-bold">{member.name}</h3>
+                <p className="text-sm text-gray-300">{member.role}</p>
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
+      </section>
+
+      {/* Bottom Wave */}
+      <div className="w-full overflow-hidden pointer-events-none select-none">
+        <img
+          src="/waves/wave_coffee.svg"
+          alt="greenWave"
+          className="w-full h-auto rotate-180"
+          draggable="false"
+        />
       </div>
-    </section>
+    </>
   );
 }

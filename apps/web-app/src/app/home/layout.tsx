@@ -1,4 +1,5 @@
 import Navbar from "@/components/navbar/Navbar";
+import NavBar from "@/components/navbar/Navbar";
 
 export default function HomeLayout({
   children,
