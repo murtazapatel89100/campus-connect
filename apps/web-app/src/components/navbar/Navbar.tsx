@@ -5,6 +5,7 @@ import { cn } from "../../lib/utils";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { theme } from "@cloudinary/url-gen/actions/effect";
+import Link from "next/link";
 
 type NavbarProps = {
   className?: string;
@@ -39,6 +40,9 @@ export default function Navbar({ className }: NavbarProps) {
           <p className={navItemClass}>HOME</p>
           <p className={navItemClass}>ABOUT</p>
           <p className={navItemClass}>CONTACT US</p>
+          <Link href={`/blog`} className={navItemClass}>
+            BLOG
+          </Link>
         </div>
 
         <SignedIn>
