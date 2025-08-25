@@ -2,8 +2,7 @@
 import { useEffect, useMemo } from "react";
 import { useInView } from "react-intersection-observer";
 import { useAnimation } from "framer-motion";
-import { AdvancedImage, lazyload, placeholder } from "@cloudinary/react";
-import { Cloudinary } from "@cloudinary/url-gen";
+import LazyLoading from "../Animation/LazyImage";
 
 export default function FindYourCircle() {
   const controls = useAnimation();
@@ -11,16 +10,6 @@ export default function FindYourCircle() {
     triggerOnce: false,
     threshold: 0.2,
   });
-  
-  // Memoize Cloudinary instance to prevent recreation on every render
-  const myImage = useMemo(() => {
-    const cld = new Cloudinary({
-      cloud: {
-        cloudName: "dt6a4jcbv",
-      },
-    });
-    return cld.image("find_your_circle_ktxxet");
-  }, []);
 
   useEffect(() => {
     if (inView) {
@@ -31,18 +20,20 @@ export default function FindYourCircle() {
   }, [controls, inView]);
 
   return (
-    <section 
+    <section
       ref={ref}
       className="w-full bg-[#F4ECE8] py-20 px-4 sm:px-8 lg:px-16"
     >
       <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-12">
         {/* Cloudinary Image with lazy loading */}
         <div className="w-full lg:w-1/2">
-          <AdvancedImage
-            cldImg={myImage as any}
-            alt="Find your circle"
-            plugins={[lazyload(), placeholder({ mode: "blur" })]}
-            className="w-full h-auto max-w-[600px] max-h-[400px] rounded-xl hover:scale-105 hover:shadow-2xl transition-transform shadow-lg object-cover"
+          <LazyLoading
+            alt="Your Cirlce"
+            height={600}
+            width={400}
+            className="rounded-xl w-full h-full hover:scale-105 hover:shadow-2xl transition-transform shadow-lg object-cover"
+            cloudId="find_your_circle_ktxxet"
+            type="cloud"
           />
         </div>
 
