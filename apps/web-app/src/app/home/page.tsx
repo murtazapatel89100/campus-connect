@@ -5,7 +5,6 @@ import Hero from "@/components/landing/Hero";
 import OrangeSection from "@/components/landing/OrangeSection";
 import TeamSection from "@/components/landing/TeamSection";
 import Feature from "@/components/landing/feature";
-import Scroll from "@/components/landing/GSAPScrollExpand";
 
 function Home() {
   return (

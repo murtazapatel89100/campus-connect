@@ -20,7 +20,6 @@ interface HeroProps {
 }
 
 const Hero: React.FC<HeroProps> = ({
-  mediaSrc = "/videos/landing1.mp4",
   bgImageSrc = "/images/herobg.png",
   title = "Campus Connect",
   textBlend = false,
@@ -43,7 +42,6 @@ const Hero: React.FC<HeroProps> = ({
   });
 
   const myImage = cld.image("herobg_r1mr09");
-  const videoId = "landing1_iszzx7";
 
   // Responsive logic
   useEffect(() => {
@@ -233,7 +231,7 @@ const Hero: React.FC<HeroProps> = ({
             }}
           >
             <video
-              src={mediaSrc}
+              src={`https://res.cloudinary.com/dt6a4jcbv/video/upload/landing1_iszzx7`}
               className="w-full h-full object-cover rounded-xl"
               width={1280}
               height={720}
