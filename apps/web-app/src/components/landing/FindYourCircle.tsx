@@ -25,7 +25,6 @@ export default function FindYourCircle() {
       className="w-full bg-[#F4ECE8] py-20 px-4 sm:px-8 lg:px-16"
     >
       <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-12">
-        {/* Cloudinary Image with lazy loading */}
         <div className="w-full lg:w-1/2">
           <LazyLoading
             alt="Your Cirlce"
@@ -37,7 +36,6 @@ export default function FindYourCircle() {
           />
         </div>
 
-        {/* Text Content */}
         <div className="w-full lg:w-1/2 text-black text-center lg:text-left">
           <h2 className="text-4xl md:text-5xl font-gothic-expanded font-extrabold tracking-wide mb-6">
             Find Your Circle,
