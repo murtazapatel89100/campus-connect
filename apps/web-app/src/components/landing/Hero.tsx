@@ -5,6 +5,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { AdvancedImage, lazyload, placeholder } from "@cloudinary/react";
 import { Cloudinary } from "@cloudinary/url-gen";
+import Link from "next/link";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -322,9 +323,12 @@ const Hero: React.FC<HeroProps> = ({
 
               {/* Buttons */}
               <div className="flex flex-col sm:flex-row gap-4 mt-12">
-                <button className="px-8 py-4 bg-teal-500 text-white text-lg font-semibold rounded-lg hover:teal-700 duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-transform">
+                <Link
+                  href={"/registration"}
+                  className="px-8 py-4 bg-teal-500 text-white text-lg font-semibold rounded-lg hover:teal-700 duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-transform"
+                >
                   Get Started
-                </button>
+                </Link>
                 <button className="px-8 py-4 border-2 border-teal-500 text-teal-500 text-lg font-semibold rounded-lg hover:bg-teal-500 hover:text-white duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-transform">
                   Learn More
                 </button>
