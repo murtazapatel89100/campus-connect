@@ -27,7 +27,7 @@ const DockWrapper = () => {
   const { isSignedIn } = useUser();
   const items = [
     {
-      icon: <VscHome size={20} className="font-extrabold" color="black" />,
+      icon: <VscHome size={20} color="black" />,
       label: "Home",
       onClick: () => alert("Home"),
     },
