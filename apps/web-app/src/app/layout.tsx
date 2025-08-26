@@ -5,6 +5,7 @@ import "./global.css";
 import Navbar from "@/components/navbar/Navbar";
 import Footer from "@/components/Footer";
 import { Toaster } from "sonner";
+import DockWrapper from "@/components/ui/dock/DockWrapper";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -35,6 +36,7 @@ export default function RootLayout({
           <Navbar className="md:hidden" />
           {children}
           <Toaster />
+          <DockWrapper />
           <Footer />
         </body>
       </html>
