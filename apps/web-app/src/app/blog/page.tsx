@@ -5,6 +5,8 @@ import MobileShowcase from "@/components/ui/mobile";
 import Link from "next/link";
 import { Search } from "lucide-react";
 import { cn } from "@/lib/utils";
+import LoadingSkeleton from "@/components/blog/Loadingskeleton";
+
 export default function BlogPage() {
   const [search, setSearch] = useState("");
   const [currentArticle, setCurrentArticle] = useState(0);
@@ -86,7 +88,7 @@ export default function BlogPage() {
 
   console.log(posts);
 
-  if (loading) return <p>Loading...</p>;
+  if (loading) return <LoadingSkeleton />;
 
   return (
     <main className="w-full min-h-screen bg-[#9EBCB8] text-black font-sans overflow-x-hidden">
