@@ -2,8 +2,7 @@
   "name": "campus-connect",
   "private": true,
   "scripts": {
-    "prepare": "husky",
-    "test":"echo 'Happy commiting'"
+    "prepare": "husky"
   },
   "devDependencies": {
     "husky": "^9.1.7"
