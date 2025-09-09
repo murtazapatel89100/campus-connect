@@ -1,0 +1,11 @@
+{
+  "name": "campus-connect",
+  "private": true,
+  "scripts": {
+    "prepare": "husky",
+    "test": "echo \"Keep calm and commit\""
+  },
+  "devDependencies": {
+    "husky": "^9.1.7"
+  }
+}
