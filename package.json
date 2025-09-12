@@ -2,10 +2,6 @@
   "name": "campus-connect",
   "private": true,
   "scripts": {
-    "prepare": "husky",
     "sync-env:web": "pnpm --filter web-app sync-env"
-  },
-  "devDependencies": {
-    "husky": "^9.1.7"
   }
 }
