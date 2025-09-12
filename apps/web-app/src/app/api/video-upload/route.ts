@@ -19,13 +19,13 @@ export async function POST(request: Request) {
     if (paramsToSign.resource_type !== "video") {
       return Response.json(
         { error: "Invalid resource_type. Only 'video' is allowed." },
-        { status: 403 }
+        { status: 403 },
       );
     }
 
     const signature = cloudinary.utils.api_sign_request(
       paramsToSign,
-      process.env.CLOUDINARY_SECRET!
+      process.env.CLOUDINARY_SECRET!,
     );
 
     return Response.json({ signature });
@@ -33,7 +33,7 @@ export async function POST(request: Request) {
     console.error("Error generating video signature:", error);
     return Response.json(
       { error: "Failed to generate video signature" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

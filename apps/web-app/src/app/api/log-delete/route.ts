@@ -18,7 +18,7 @@ export async function DELETE(request: Request) {
     if (!id) {
       return NextResponse.json(
         { success: false, error: "Missing ID for single log deletion" },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
@@ -27,7 +27,7 @@ export async function DELETE(request: Request) {
   } catch (error) {
     return NextResponse.json(
       { success: false, error: "Failed to delete log(s)" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

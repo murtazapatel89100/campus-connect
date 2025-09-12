@@ -142,7 +142,7 @@ const ForgotPasswordPage: NextPage = () => {
                       <button
                         type="submit"
                         className={cn(
-                          buttonVariants({ variant: "login", size: "lg" })
+                          buttonVariants({ variant: "login", size: "lg" }),
                         )}
                       >
                         Send password reset code
@@ -201,7 +201,7 @@ const ForgotPasswordPage: NextPage = () => {
                       <button
                         type="submit"
                         className={cn(
-                          buttonVariants({ variant: "login", size: "lg" })
+                          buttonVariants({ variant: "login", size: "lg" }),
                         )}
                       >
                         Reset

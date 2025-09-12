@@ -26,13 +26,13 @@ export default function Navbar({ className }: NavbarProps) {
     <div
       className={cn(
         "fixed top-0 left-0 w-full z-50 py-3 px-5",
-        hide && "hidden"
+        hide && "hidden",
       )}
     >
       <nav
         className={cn(
           "bg-white/20 backdrop-blur-3xl border border-black shadow-lg flex items-center justify-between px-8 py-4 font-semibold text-black rounded-2xl",
-          className
+          className,
         )}
       >
         {/* Left Side */}

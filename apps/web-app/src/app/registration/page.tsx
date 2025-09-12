@@ -90,7 +90,7 @@ function AuthPageContent() {
 
         // Redirect to same page with otp=true and email param to trigger OTP input
         router.push(
-          `/registration?otp=true&email=${encodeURIComponent(email)}`
+          `/registration?otp=true&email=${encodeURIComponent(email)}`,
         );
       } else {
         // Step 3: Attempt OTP verification
@@ -123,7 +123,7 @@ function AuthPageContent() {
         message.toLowerCase().includes("exist")
       ) {
         setError(
-          "An account with this email already exists. Please sign in instead."
+          "An account with this email already exists. Please sign in instead.",
         );
       } else {
         setError(message);

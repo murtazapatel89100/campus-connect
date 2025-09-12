@@ -54,7 +54,7 @@ const page = () => {
       if (!res.ok) {
         alert(
           "Something went wrong: " +
-            JSON.stringify(result.errors || result.message)
+            JSON.stringify(result.errors || result.message),
         );
         return;
       }
