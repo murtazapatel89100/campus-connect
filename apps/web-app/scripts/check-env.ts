@@ -6,7 +6,7 @@ const templatePath: string = path.resolve(process.cwd(), "env.template");
 
 function checkAndCreateEnv(): void {
   if (fs.existsSync(envPath)) {
-    console.log("✅ Your .env exists");
+    console.log("Your .env exists");
   } else {
     if (fs.existsSync(templatePath)) {
       fs.copyFileSync(templatePath, envPath);
