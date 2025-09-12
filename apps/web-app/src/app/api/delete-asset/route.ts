@@ -13,7 +13,10 @@ export async function POST(req: Request) {
     const { public_id, resource_type } = await req.json();
 
     if (!public_id || !resource_type) {
-      return NextResponse.json({ success: false, error: "Missing data" }, { status: 400 });
+      return NextResponse.json(
+        { success: false, error: "Missing data" },
+        { status: 400 },
+      );
     }
 
     const result = await cloudinary.uploader.destroy(public_id, {
@@ -24,9 +27,15 @@ export async function POST(req: Request) {
       return NextResponse.json({ success: true });
     }
 
-    return NextResponse.json({ success: false, error: result.result }, { status: 500 });
+    return NextResponse.json(
+      { success: false, error: result.result },
+      { status: 500 },
+    );
   } catch (err) {
     console.error("Cloudinary delete error:", err);
-    return NextResponse.json({ success: false, error: "Server error" }, { status: 500 });
+    return NextResponse.json(
+      { success: false, error: "Server error" },
+      { status: 500 },
+    );
   }
 }

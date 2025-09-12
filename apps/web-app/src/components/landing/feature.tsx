@@ -4,7 +4,14 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { cn } from "@/lib/utils";
 import {
-  FaCode, FaCloud, FaDollarSign, FaExchangeAlt, FaHeart, FaQuestionCircle, FaRoute, FaBolt
+  FaCode,
+  FaCloud,
+  FaDollarSign,
+  FaExchangeAlt,
+  FaHeart,
+  FaQuestionCircle,
+  FaRoute,
+  FaBolt,
 } from "react-icons/fa";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -13,14 +20,51 @@ export default function Feature() {
   const containerRef = useRef<HTMLDivElement>(null);
 
   const features = [
-    { title: "Built for developers", description: "Built for engineers, developers, dreamers, thinkers and doers.", icon: <FaCode size={28} /> },
-    { title: "Ease of use", description: "It's as easy as using an Apple, and as expensive as buying one.", icon: <FaExchangeAlt size={28} /> },
-    { title: "Pricing like no other", description: "Our prices are best in the market. No cap, no lock, no credit card required.", icon: <FaDollarSign size={28} /> },
-    { title: "100% Uptime guarantee", description: "We just cannot be taken down by anyone.", icon: <FaCloud size={28} /> },
-    { title: "Multi-tenant Architecture", description: "You can simply share passwords instead of buying new seats", icon: <FaRoute size={28} /> },
-    { title: "24/7 Customer Support", description: "We are available a 100% of the time. At least our AI Agents are.", icon: <FaQuestionCircle size={28} /> },
-    { title: "Money back guarantee", description: "If you do not like EveryAI, we will convince you to like us.", icon: <FaBolt size={28} /> },
-    { title: "And everything else", description: "lorem opsum", icon: <FaHeart size={28} /> },
+    {
+      title: "Built for developers",
+      description:
+        "Built for engineers, developers, dreamers, thinkers and doers.",
+      icon: <FaCode size={28} />,
+    },
+    {
+      title: "Ease of use",
+      description:
+        "It's as easy as using an Apple, and as expensive as buying one.",
+      icon: <FaExchangeAlt size={28} />,
+    },
+    {
+      title: "Pricing like no other",
+      description:
+        "Our prices are best in the market. No cap, no lock, no credit card required.",
+      icon: <FaDollarSign size={28} />,
+    },
+    {
+      title: "100% Uptime guarantee",
+      description: "We just cannot be taken down by anyone.",
+      icon: <FaCloud size={28} />,
+    },
+    {
+      title: "Multi-tenant Architecture",
+      description: "You can simply share passwords instead of buying new seats",
+      icon: <FaRoute size={28} />,
+    },
+    {
+      title: "24/7 Customer Support",
+      description:
+        "We are available a 100% of the time. At least our AI Agents are.",
+      icon: <FaQuestionCircle size={28} />,
+    },
+    {
+      title: "Money back guarantee",
+      description:
+        "If you do not like EveryAI, we will convince you to like us.",
+      icon: <FaBolt size={28} />,
+    },
+    {
+      title: "And everything else",
+      description: "lorem opsum",
+      icon: <FaHeart size={28} />,
+    },
   ];
 
   useEffect(() => {
@@ -51,7 +95,7 @@ export default function Feature() {
           <div
             key={feature.title}
             className={cn(
-              "feature-card group relative flex flex-col bg-white/10 dark:bg-neutral-800/40 backdrop-blur-md p-8 rounded-2xl shadow-lg border border-neutral-200/20 dark:border-neutral-700/30 cursor-pointer overflow-hidden"
+              "feature-card group relative flex flex-col bg-white/10 dark:bg-neutral-800/40 backdrop-blur-md p-8 rounded-2xl shadow-lg border border-neutral-200/20 dark:border-neutral-700/30 cursor-pointer overflow-hidden",
             )}
           >
             {/* Glow effect */}

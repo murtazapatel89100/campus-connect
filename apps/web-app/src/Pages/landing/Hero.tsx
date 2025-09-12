@@ -54,7 +54,7 @@ export const ScrollExpandMedia = ({
         const scrollDelta = e.deltaY * 0.0009;
         const newProgress = Math.min(
           Math.max(scrollProgress + scrollDelta, 0),
-          1
+          1,
         );
         setScrollProgress(newProgress);
 
@@ -83,7 +83,7 @@ export const ScrollExpandMedia = ({
         const scrollDelta = deltaY * scrollFactor;
         const newProgress = Math.min(
           Math.max(scrollProgress + scrollDelta, 0),
-          1
+          1,
         );
         setScrollProgress(newProgress);
 
@@ -110,28 +110,28 @@ export const ScrollExpandMedia = ({
     window.addEventListener(
       "touchstart",
       handleTouchStart as unknown as EventListener,
-      { passive: false }
+      { passive: false },
     );
     window.addEventListener(
       "touchmove",
       handleTouchMove as unknown as EventListener,
-      { passive: false }
+      { passive: false },
     );
     window.addEventListener("touchend", handleTouchEnd as EventListener);
 
     return () => {
       window.removeEventListener(
         "wheel",
-        handleWheel as unknown as EventListener
+        handleWheel as unknown as EventListener,
       );
       window.removeEventListener("scroll", handleScroll as EventListener);
       window.removeEventListener(
         "touchstart",
-        handleTouchStart as unknown as EventListener
+        handleTouchStart as unknown as EventListener,
       );
       window.removeEventListener(
         "touchmove",
-        handleTouchMove as unknown as EventListener
+        handleTouchMove as unknown as EventListener,
       );
       window.removeEventListener("touchend", handleTouchEnd as EventListener);
     };

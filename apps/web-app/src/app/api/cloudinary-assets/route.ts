@@ -29,7 +29,7 @@ export async function GET() {
 
     const combinedAssets = [...images.resources, ...videos.resources].sort(
       (a, b) =>
-        new Date(b.created_at).getTime() - new Date(a.created_at).getTime()
+        new Date(b.created_at).getTime() - new Date(a.created_at).getTime(),
     );
 
     return Response.json({ assets: combinedAssets });
@@ -37,7 +37,7 @@ export async function GET() {
     console.error("❌ Cloudinary fetch error:", err.message || err);
     return new Response(
       JSON.stringify({ error: "Failed to fetch assets", details: err.message }),
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

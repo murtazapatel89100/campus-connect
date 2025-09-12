@@ -98,24 +98,24 @@ const Hero: React.FC<HeroProps> = ({
       tl.fromTo(
         campus,
         { x: "100vw", opacity: 0 },
-        { x: 0, opacity: 1, duration: 0.3, ease: "power4.out" }
+        { x: 0, opacity: 1, duration: 0.3, ease: "power4.out" },
       )
         .fromTo(
           connect,
           { x: "-100vw", opacity: 0 },
           { x: 0, opacity: 1, duration: 0.3, ease: "power4.out" },
-          "<" // Start at the same time as Campus
+          "<", // Start at the same time as Campus
         )
         // Phase 2: Text disappears, logo appears (40-60% of scroll)
         .to(
           [campus, connect],
           { opacity: 0, duration: 0.2, ease: "power2.in" },
-          "+=0.1"
+          "+=0.1",
         )
         .to(
           logo,
           { opacity: 1, scale: 1, duration: 0.2, ease: "power2.out" },
-          "<"
+          "<",
         )
         // Phase 3: Media resize + Logo scaling + Background fade (60-100% of scroll)
         .to(
@@ -126,7 +126,7 @@ const Hero: React.FC<HeroProps> = ({
             ease: "power1.out",
             duration: 0.4,
           },
-          "+=0.1"
+          "+=0.1",
         )
         .to(
           media,
@@ -135,7 +135,7 @@ const Hero: React.FC<HeroProps> = ({
             ease: "power1.out",
             duration: 0.4,
           },
-          "<"
+          "<",
         )
         .to(
           logo,
@@ -145,7 +145,7 @@ const Hero: React.FC<HeroProps> = ({
             ease: "power1.out",
             duration: 0.4,
           },
-          "<" // Start at the same time as media resize
+          "<", // Start at the same time as media resize
         )
         // Add pulsing effect for extra attention
         .to(
@@ -156,7 +156,7 @@ const Hero: React.FC<HeroProps> = ({
             ease: "power2.out",
             duration: 0.2,
           },
-          "<0.2"
+          "<0.2",
         )
         .to(
           bgOverlay,
@@ -165,7 +165,7 @@ const Hero: React.FC<HeroProps> = ({
             ease: "power1.out",
             duration: 0.4,
           },
-          "<" // Start at the same time as media resize
+          "<", // Start at the same time as media resize
         );
 
       return () => {
