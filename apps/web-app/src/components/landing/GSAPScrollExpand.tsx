@@ -44,7 +44,15 @@ const Hero: React.FC<HeroProps> = ({
 
   // Combined GSAP animation - Media resize + Text animation + Background fade
   useEffect(() => {
-    if (!containerRef.current || !mediaRef.current || !campusRef.current || !connectRef.current || !logoRef.current || !bgOverlayRef.current) return;
+    if (
+      !containerRef.current ||
+      !mediaRef.current ||
+      !campusRef.current ||
+      !connectRef.current ||
+      !logoRef.current ||
+      !bgOverlayRef.current
+    )
+      return;
 
     const ctx = gsap.context(() => {
       const media = mediaRef.current!;
@@ -81,74 +89,75 @@ const Hero: React.FC<HeroProps> = ({
       tl.fromTo(
         campus,
         { x: "100vw", opacity: 0 },
-        { x: 0, opacity: 1, duration: 0.3, ease: "power4.out" }
-      )
-      .fromTo(
-        connect,
-        { x: "-100vw", opacity: 0 },
         { x: 0, opacity: 1, duration: 0.3, ease: "power4.out" },
-        "<" // Start at the same time as Campus
       )
-      // Phase 2: Text disappears, logo appears (40-60% of scroll)
-      .to(
-        [campus, connect],
-        { opacity: 0, duration: 0.2, ease: "power2.in" },
-        "+=0.1"
-      )
-      .to(
-        logo,
-        { opacity: 1, scale: 1, duration: 0.2, ease: "power2.out" },
-        "<"
-      )
-      // Phase 3: Media resize + Logo scaling + Background fade (60-100% of scroll)
-      .to(
-        media,
-        {
-          width: mediaFinalWidth,
-          height: mediaFinalHeight,
-          ease: "power1.out",
-          duration: 0.4,
-        },
-        "+=0.1"
-      )
-      .to(
-        media,
-        {
-          boxShadow: "0px 0px 80px rgba(0,0,0,0.5)",
-          ease: "power1.out",
-          duration: 0.4,
-        },
-        "<"
-      )
-      .to(
-        logo,
-        {
-          width: isMobile ? 300 : 400, // Made even larger for better visibility
-          height: isMobile ? 300 : 400,
-          ease: "power1.out",
-          duration: 0.4,
-        },
-        "<" // Start at the same time as media resize
-      )
-      // Add pulsing effect for extra attention
-      .to(
-        logo,
-        {
-          filter: "drop-shadow(0 8px 25px rgba(0,0,0,0.4)) drop-shadow(0 0 40px rgba(255,255,255,1))",
-          ease: "power2.out",
-          duration: 0.2,
-        },
-        "<0.2"
-      )
-      .to(
-        bgOverlay,
-        {
-          opacity: 1, // Fade in the background overlay
-          ease: "power1.out",
-          duration: 0.4,
-        },
-        "<" // Start at the same time as media resize
-      );
+        .fromTo(
+          connect,
+          { x: "-100vw", opacity: 0 },
+          { x: 0, opacity: 1, duration: 0.3, ease: "power4.out" },
+          "<", // Start at the same time as Campus
+        )
+        // Phase 2: Text disappears, logo appears (40-60% of scroll)
+        .to(
+          [campus, connect],
+          { opacity: 0, duration: 0.2, ease: "power2.in" },
+          "+=0.1",
+        )
+        .to(
+          logo,
+          { opacity: 1, scale: 1, duration: 0.2, ease: "power2.out" },
+          "<",
+        )
+        // Phase 3: Media resize + Logo scaling + Background fade (60-100% of scroll)
+        .to(
+          media,
+          {
+            width: mediaFinalWidth,
+            height: mediaFinalHeight,
+            ease: "power1.out",
+            duration: 0.4,
+          },
+          "+=0.1",
+        )
+        .to(
+          media,
+          {
+            boxShadow: "0px 0px 80px rgba(0,0,0,0.5)",
+            ease: "power1.out",
+            duration: 0.4,
+          },
+          "<",
+        )
+        .to(
+          logo,
+          {
+            width: isMobile ? 300 : 400, // Made even larger for better visibility
+            height: isMobile ? 300 : 400,
+            ease: "power1.out",
+            duration: 0.4,
+          },
+          "<", // Start at the same time as media resize
+        )
+        // Add pulsing effect for extra attention
+        .to(
+          logo,
+          {
+            filter:
+              "drop-shadow(0 8px 25px rgba(0,0,0,0.4)) drop-shadow(0 0 40px rgba(255,255,255,1))",
+            ease: "power2.out",
+            duration: 0.2,
+          },
+          "<0.2",
+        )
+        .to(
+          bgOverlay,
+          {
+            opacity: 1, // Fade in the background overlay
+            ease: "power1.out",
+            duration: 0.4,
+          },
+          "<", // Start at the same time as media resize
+        );
 
       return () => {
         if (tl.scrollTrigger) tl.scrollTrigger.kill();
@@ -191,7 +200,7 @@ const Hero: React.FC<HeroProps> = ({
         )}
         <div className="absolute inset-0 bg-black/10" />
         {/* Background color overlay that fades in */}
-        <div 
+        <div
           ref={bgOverlayRef}
           className="absolute inset-0 opacity-0"
           style={{ backgroundColor: "#F4ECE8" }}
@@ -273,11 +282,7 @@ const Hero: React.FC<HeroProps> = ({
                       textRendering: "geometricPrecision",
                     }}
                   >
-                    <image
-                      href="/assets/app-logo.svg"
-                      width="80"
-                      height="80"
-                    />
+                    <image href="/assets/app-logo.svg" width="80" height="80" />
                   </svg>
                 </span>
               </div>
@@ -304,7 +309,7 @@ const Hero: React.FC<HeroProps> = ({
                 sapiente repellat quia dolores voluptatem id, dolore, rem
                 numquam autem magnam ipsam placeat accusamus?
               </p>
-              
+
               {/* Buttons */}
               <div className="flex flex-col sm:flex-row gap-4 mt-12">
                 <button className="px-8 py-4 bg-teal-500 text-white text-lg font-semibold rounded-lg hover:teal-700 duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-transform">

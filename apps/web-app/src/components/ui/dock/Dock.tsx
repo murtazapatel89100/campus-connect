@@ -66,7 +66,7 @@ function DockItem({
     mouseDistance,
     [0, distance],
     [magnification, baseItemSize],
-    { clamp: true }
+    { clamp: true },
   );
 
   const size = useSpring(targetSize, spring);
@@ -157,7 +157,7 @@ export default function Dock({
 
   const maxHeight = useMemo(
     () => Math.max(dockHeight, magnification + magnification / 2),
-    [dockHeight, magnification]
+    [dockHeight, magnification],
   );
 
   const heightRow = useTransform(isHovered, [0, 1], [panelHeight, maxHeight]);

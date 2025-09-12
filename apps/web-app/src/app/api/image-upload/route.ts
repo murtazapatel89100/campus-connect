@@ -19,14 +19,14 @@ export async function POST(request: Request) {
     if (paramsToSign.resource_type && paramsToSign.resource_type !== "image") {
       return Response.json(
         { error: "Only image uploads are allowed on this endpoint." },
-        { status: 403 }
+        { status: 403 },
       );
     }
 
     // ✅ Generate signature
     const signature = cloudinary.utils.api_sign_request(
       paramsToSign,
-      process.env.CLOUDINARY_SECRET!
+      process.env.CLOUDINARY_SECRET!,
     );
 
     return Response.json({ signature });
@@ -34,7 +34,7 @@ export async function POST(request: Request) {
     console.error("Error generating signature:", error);
     return Response.json(
       { error: "Failed to generate signature" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

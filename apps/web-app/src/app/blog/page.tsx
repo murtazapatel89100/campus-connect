@@ -149,7 +149,7 @@ export default function BlogPage() {
                     "relative w-full",
                     post.span?.includes("row-span-2")
                       ? "h-64 sm:h-80 lg:h-96"
-                      : "h-48 sm:h-56 lg:h-64"
+                      : "h-48 sm:h-56 lg:h-64",
                   )}
                 >
                   <Image

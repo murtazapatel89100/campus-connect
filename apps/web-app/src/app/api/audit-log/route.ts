@@ -13,7 +13,7 @@ export async function POST(req: Request) {
     if (!result.success) {
       return NextResponse.json(
         { success: false, error: result.error.format() },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
@@ -23,7 +23,7 @@ export async function POST(req: Request) {
     console.error("Failed to save audit log:", error);
     return NextResponse.json(
       { success: false, error: "Failed to save audit log" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
@@ -36,7 +36,7 @@ export async function GET() {
   } catch (error) {
     return NextResponse.json(
       { success: false, error: "Failed to fetch logs" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

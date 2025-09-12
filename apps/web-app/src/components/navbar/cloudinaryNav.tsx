@@ -61,7 +61,7 @@ const CloudinaryNav = () => {
               className={cn(
                 "relative flex items-center gap-2 py-1",
                 "transition-all duration-300",
-                isActive && "font-semibold text-white"
+                isActive && "font-semibold text-white",
               )}
             >
               {item.icon}
@@ -70,7 +70,7 @@ const CloudinaryNav = () => {
               <span
                 className={cn(
                   "absolute bottom-0 left-0 h-[2px] bg-white transition-all duration-300",
-                  isActive ? "w-full" : "w-0"
+                  isActive ? "w-full" : "w-0",
                 )}
               />
             </Link>

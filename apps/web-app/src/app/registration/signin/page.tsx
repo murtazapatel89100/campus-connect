@@ -83,7 +83,7 @@ function SigninPage() {
         message.toLowerCase().includes("exist")
       ) {
         setError(
-          "An account with this email already exists. Please sign in instead."
+          "An account with this email already exists. Please sign in instead.",
         );
       } else {
         setError(message);

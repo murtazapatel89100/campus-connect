@@ -10,7 +10,7 @@ const auditLogSchema = new mongoose.Schema(
     timestamp: Date,
     action: String,
   },
-  { collection: "audit_logs" }
+  { collection: "audit_logs" },
 );
 
 export const AuditLog =

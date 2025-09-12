@@ -14,7 +14,7 @@ export default clerkMiddleware(async (auth, req) => {
     const session = await auth();
     if (!session.userId) {
       return NextResponse.redirect(
-        new URL("/registration?breach=true", req.url)
+        new URL("/registration?breach=true", req.url),
       );
     }
   }

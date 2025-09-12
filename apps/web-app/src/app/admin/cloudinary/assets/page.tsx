@@ -30,7 +30,7 @@ export default function ViewAssets() {
       } catch (error) {
         console.error("Failed to fetch assets:", error);
         setError(
-          error instanceof Error ? error.message : "Failed to fetch assets"
+          error instanceof Error ? error.message : "Failed to fetch assets",
         );
       } finally {
         setLoading(false);
@@ -42,7 +42,7 @@ export default function ViewAssets() {
 
   const handleDelete = async (publicId: string, resourceType: string) => {
     const confirmed = window.confirm(
-      "Are you sure you want to delete this asset?"
+      "Are you sure you want to delete this asset?",
     );
     if (!confirmed) return;
 
