@@ -25,4 +25,4 @@ jobs:
         run: pnpm install
 
       - name: Run Prettier check
-        run: pnpm --filter web-app pretty-fy --check
+        run: pnpm prettier --check "**/*.{ts,tsx,js,jsx,json,css,md}"
