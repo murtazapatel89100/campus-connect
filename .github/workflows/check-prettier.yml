@@ -1,0 +1,30 @@
+name: Prettier Check
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  prettier:
+    name: Check Prettier formatting
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 22
+          cache: "pnpm"
+
+      - name: Install pnpm
+        run: npm install -g pnpm
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Run Prettier check
+        run: pnpm --filter web-app pretty-fy --check
