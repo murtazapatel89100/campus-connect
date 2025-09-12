@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "next lint",
     "postinstall": "NODE_NO_WARNINGS=1 pnpm exec ts-node --esm scripts/create-env.ts",
-    "sync-env": "NODE_NO_WARNINGS=1 pnpm exec ts-node --esm scripts/update-env.ts"
+    "sync-env": "NODE_NO_WARNINGS=1 pnpm exec ts-node --esm scripts/update-env.ts",
+    "pretty-fy": "pnpm prettier --write \"**/*.{ts,tsx,js,jsx,json,css,md}\""
   },
   "dependencies": {
     "@clerk/backend": "^2.9.3",
@@ -58,6 +59,7 @@
     "eslint-config-next": "15.3.5",
     "husky": "^9.1.7",
     "postcss": "^8.5.6",
+    "prettier": "^3.6.2",
     "tailwindcss": "4.1.11",
     "ts-node": "^10.9.2",
     "tw-animate-css": "^1.3.6",
