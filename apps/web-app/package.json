@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "postinstall": "NODE_NO_WARNINGS=1 pnpm exec ts-node --esm scripts/check-env.ts",
+    "postinstall": "NODE_NO_WARNINGS=1 pnpm exec ts-node --esm scripts/create-env.ts",
     "sync-env": "NODE_NO_WARNINGS=1 pnpm exec ts-node --esm scripts/update-env.ts"
   },
   "dependencies": {
