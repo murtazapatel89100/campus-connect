@@ -2,6 +2,11 @@
   "name": "campus-connect",
   "private": true,
   "scripts": {
-    "sync-env:web": "pnpm --filter web-app sync-env"
+    "sync-env:web": "pnpm --filter web-app sync-env",
+    "prepare": "husky",
+    "test": "echo \"Error: no test specified\""
+  },
+  "devDependencies": {
+    "husky": "^9.1.7"
   }
 }
