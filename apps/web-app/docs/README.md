@@ -1,37 +1,39 @@
-# Campus Connect – Web App Docs
+# 🚀 Campus Connect
 
-Welcome to the developer docs for the **Campus Connect Web App**!  
-This section includes all the technical details, setup instructions, and architecture overviews for contributors and team members.
-
----
-
-## 🧱 Project Overview
-
-This app is built using:
-
-- **Next.js 14** (App Router)
-- **Tailwind CSS**
-- **Sanity CMS**
-- **MongoDB + NextAuth**
-- **Framermotion**
-- **pnpm (monorepo)**
+Welcome to **Campus Connect**!  
+This project uses **[pnpm](https://pnpm.io/)** as the package manager.
 
 ---
 
-## 📖 Documentation Index
+## 📦 Prerequisites
 
-- [🛠 Setup Guide](./setup-guide.md) – How to install and run the app
+Before setting up the project, make sure you have:
 
----
+- [Node.js](https://nodejs.org/en/docs/) (latest LTS version recommended)
+- [pnpm](https://pnpm.io/) → [Installation Guide](https://pnpm.io/installation)
 
-## 🧠 Tips
-
-- Use `pnpm install` only
-- Make sure your `.env.local` is set
-- Keep all components reusable and modular
+> ℹ️ If you already have **pnpm** installed, you can skip installing it again.
 
 ---
 
-## 🧑‍💻 Need Help?
+## 🔑 Environment Variables
 
-Ping `@murtazapatel89100` or `@death2sniper` on GitHub or Slack for access to secrets or debugging help.
+When you run the initial install: `pnpm i`, a `.env.local` file will be **auto-generated**.  
+You do **not** need to create this manually.
+
+---
+
+## 📥 Clone the Repository
+
+Choose one of the following methods:
+
+### Using HTTPS
+
+```bash
+git clone https://github.com/murtazapatel89100/campus-connect.git
+cd campus-connect
+pnpm i
+pnpm run dev
+```
+
+> ℹ️ Or use SSH as need
