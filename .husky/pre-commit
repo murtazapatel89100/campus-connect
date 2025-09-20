@@ -1,3 +1,2 @@
 pnpm --filter web-app sync-env
 pnpm --filter web-app pretty-fy
-pnpm lint-staged

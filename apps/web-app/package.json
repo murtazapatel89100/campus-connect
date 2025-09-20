@@ -8,8 +8,8 @@
     "start": "next start",
     "lint": "next lint",
     "postinstall": "cross-env NODE_NO_WARNINGS=1 node --loader ts-node/esm ./scripts/create-env.mts",
-  "sync-env": "cross-env NODE_NO_WARNINGS=1 node --loader ts-node/esm ./scripts/update-env.mts",
-  "pretty-fy": "pnpm prettier --write \"**/*.{ts,tsx,js,jsx,json,css,md}\""
+    "sync-env": "cross-env NODE_NO_WARNINGS=1 node --loader ts-node/esm ./scripts/update-env.mts",
+    "pretty-fy": "pnpm prettier --write \"**/*.{ts,tsx,js,jsx,json,css,md}\""
   },
   "dependencies": {
     "@clerk/backend": "^2.9.3",
