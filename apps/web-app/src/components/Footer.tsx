@@ -13,7 +13,8 @@ export default function Footer() {
       pathname.startsWith("/registration") ||
       pathname.startsWith("/admin") ||
       pathname.startsWith("/forgot-password") ||
-      pathname.startsWith("/blog")
+      pathname.startsWith("/blog") ||
+      pathname.startsWith("/events")
     ) {
       setHide(true);
     } else {
