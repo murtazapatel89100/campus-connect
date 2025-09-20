@@ -6,6 +6,13 @@
   },
   "devDependencies": {
     "husky": "^9.1.7",
+    "lint-staged": "^16.1.6",
     "prettier": "^3.6.2"
+  },
+  "lint-staged": {
+    "apps/web-app/**/*.{ts,tsx,js,jsx,json,css,md}": [
+      "prettier --write",
+      "git add"
+    ]
   }
 }
