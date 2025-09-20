@@ -33,6 +33,8 @@ Choose one of the following methods:
 git clone https://github.com/murtazapatel89100/campus-connect.git
 cd campus-connect
 pnpm i
+cd apps/web-app
+pnpm i
 pnpm run dev
 ```
 

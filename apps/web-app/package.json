@@ -7,8 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "postinstall": "NODE_NO_WARNINGS=1 pnpm exec ts-node --esm scripts/create-env.ts",
-    "sync-env": "NODE_NO_WARNINGS=1 pnpm exec ts-node --esm scripts/update-env.ts",
+    "postinstall": "cross-env NODE_NO_WARNINGS=1 node --loader ts-node/esm ./scripts/create-env.mts",
+    "sync-env": "cross-env NODE_NO_WARNINGS=1 node --loader ts-node/esm ./scripts/update-env.mts",
     "pretty-fy": "pnpm prettier --write \"**/*.{ts,tsx,js,jsx,json,css,md}\""
   },
   "dependencies": {
@@ -55,6 +55,7 @@
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "autoprefixer": "^10.4.21",
+    "cross-env": "^10.0.0",
     "eslint": "^9",
     "eslint-config-next": "15.3.5",
     "husky": "^9.1.7",
