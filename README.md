@@ -5,7 +5,7 @@ It combines event management, attendance tracking, smart curriculum tools, and c
 
 ---
 
-## 🚀 Overview
+## Overview
 
 - 📅 **Events & Activities**  
   Stay updated on campus events, register instantly, and receive timely reminders.
@@ -24,7 +24,7 @@ It combines event management, attendance tracking, smart curriculum tools, and c
 
 ---
 
-## ✨ Why Campus Connect?
+## Why Campus Connect?
 
 - Built **by students, for students**
 - Replaces scattered tools with **one integrated platform**
@@ -33,13 +33,13 @@ It combines event management, attendance tracking, smart curriculum tools, and c
 
 ---
 
-## 🏆 Vision
+## Vision
 
 To create a **digital-first campus experience** that enhances student engagement, makes administration smarter, and bridges the gap between faculty and students.
 
 ---
 
-## 📌 Current Scope
+## Current Scope
 
 - Prototype for **attendance, events, and community features**
 - Integrated blog and announcements section
