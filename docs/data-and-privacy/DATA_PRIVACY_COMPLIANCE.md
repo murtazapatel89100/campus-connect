@@ -12,6 +12,7 @@ Key points:
 
 - Universities are **not allowed to store sensitive biometric information**, including facial scans, fingerprints, or iris data.
 - Collection or storage of **Aadhaar data** for academic or attendance purposes is **strictly prohibited** unless explicitly mandated and authorized by law.
+- **Relevant Law:** The **Aadhaar (Targeted Delivery of Financial and Other Subsidies, Benefits and Services) Act, 2016**, and associated **Privacy Guidelines under UGC regulations**, restrict the collection and storage of biometric information in educational institutions.
 - Violating these rules may result in **legal penalties**, institutional sanctions, and privacy breaches.
 
 ---
@@ -26,7 +27,7 @@ To comply with these regulations while still offering secure attendance verifica
 
 2. **No Aadhaar or Government-Linked Biometric Data**
    - Campus Connect **does not request or process Aadhaar numbers, fingerprints, or any government-issued biometric information**.
-   - This ensures **full compliance with UGC and Indian privacy regulations**.
+   - This ensures **full compliance with the Aadhaar Act, 2016, and UGC privacy guidelines**.
 
 3. **Secure Temporary Processing**
    - Any face comparison operations happen **on the device or in a secure ephemeral processing pipeline**.
@@ -36,7 +37,7 @@ To comply with these regulations while still offering secure attendance verifica
 
 ## 3. Benefits
 
-- **Regulatory Compliance:** Fully adheres to Indian laws regarding sensitive data in universities.
+- **Regulatory Compliance:** Fully adheres to **Aadhaar Act, 2016** and Indian laws regarding sensitive data in universities.
 - **Student Privacy:** Protects students from potential misuse of biometric data.
 - **Operational Efficiency:** Enables attendance verification without compromising privacy or legality.
 - **Future-Proof:** The system can adapt to further guidelines on data protection (e.g., India’s Personal Data Protection Bill).
